@@ -1,0 +1,113 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 211 (A01)}{Homework 1}{Jason Siefken}{V00123456}{John Doe}{V00276354}
+	\begin{enumerate}
+		\item Tell me about vectors.
+		\begin{quote}
+			Vectors are the greatest things ever!
+			We might write them with a little arrow, like $\vec x$,
+			we might write them boldface like $\mathbf{x}$, or we might write them with hats $\hat x$.
+			We might even decide to write them with components, like
+			\[
+				\vec e_2 = \mat{0\\1\\0\\0}\in \R^4.
+			\]
+		\end{quote}
+
+		\item Tell me about matrices.
+		\begin{quote}
+			Matrices are also great!  They sure do take up a lot of space
+			on the page though, so it's useful to give them names.  For example,
+			\[
+				A=\mat{1&2&3\\4&5&6\\7&8&9}
+				\qquad
+				\text{and}
+				\qquad
+				B=\mat{-1&2&3\\4&-5&6\\7&8&-9}.
+			\]
+			Then we can write matrix equations easily, like 
+			$AB\vec x = B^{-1} A^{T}\vec y$.
+
+			We might want to write row operations:
+			\[
+				 \mat{1&2&3\\4&5&6\\7&8&9}
+				 \xrightarrow{R_2\to R_2-4R_1}
+				 \mat{1&2&3\\0&-3&-6\\7&8&9}
+			\]\[
+				 \xrightarrow{R_3\to R_3-7R_1}
+				 \mat{1&2&3\\0&-3&-6\\0&-6&-12}
+				 \xrightarrow{R_2\leftrightarrow R_3}
+				 \mat{1&2&3\\0&-6&-12\\0&-3&-6}.
+			\]
+		\end{quote}
+
+		\item Show me some \emph{complicated} ``notation.''
+		\begin{quote}
+			Well, we can do sums like $\sum_{i=1}^{\infty} x_i$ and fractions like
+			$\frac{4+z}{\sqrt{3}}$.  We can also make our brackets scale
+			to fit the contents inside:
+			\[
+				\left(
+					17\vec x - \sum_{i=-10}^{10^9} \frac{4\pi \vec e_i}{3}
+				\right).
+			\]
+			We can also do set notation, but we have to escape our curly braces:
+			\[
+				V=\{ x \in \Z: 5\leq x\leq 12\text{ or }x^2\geq 200 \}.
+			\]
+			There are also special symbols for $\R$, $\Z$, and $\N$
+			and we can pick some fancy fonts if we want others like $\mathcal F$
+			or $\mathcal G$ or $\mathfrak W$ or $\mathfrak L$.
+			For instance, maybe we want to write $\mathcal L:\R^n\to R^m$.
+			We can also write fun greek letters like $\alpha$, $\beta$, $\gamma$,
+			$\delta$, and their capital letters like $\Gamma$ and $\Delta$.
+		\end{quote}
+	\end{enumerate}
+\end{document}
