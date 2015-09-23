@@ -1,0 +1,102 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 281-1}{Homework 1}{Due: Thursday, October 1}{}{}{}
+	\begin{enumerate}
+		\item Find unit vectors in the directions $\vec u=\mat{2\\-1}$,
+		$\vec v=\hat x+3\hat y$, $\vec w=-\hat x-\hat y-\hat z$, and
+		$\vec r=\frac{\vec v}{\|\vec v\|}+\frac{\vec w}{\|\vec w\|}$.
+
+		\item Use the algebraic definition of the dot product to show for any 
+		$\vec a,\vec b,\vec c\in\R^n$ and $\alpha\in \R$
+		\begin{enumerate}
+			\item[(i)] $\vec a\cdot (\alpha\vec b) = \alpha(\vec a\cdot \vec b)$
+			\item[(ii)] $\vec a\cdot(\vec b+\vec c) = \vec a\cdot \vec b+\vec a\cdot \vec c$
+		\end{enumerate}
+		(See page 7 of the Evans text for the definition of $\alpha\vec v$ and $\vec u+\vec v$.)
+
+		\item For vectors $\vec a,\vec b,\vec c\in\R^n$, is $\vec a\cdot\vec b\cdot \vec c$ defined?
+		Explain your answer in terms of the definition of the dot product.
+
+		\item Consider the plane $\mathcal P$ defined as the set of solutions to the
+		equation 
+		\[
+			3x-2y+z=4.
+		\]
+		Let $\vec p\in \mathcal P$ be a point in $\mathcal P$ interpreted as a vector.
+		\begin{enumerate}
+			\item What is $\vec p\cdot \mat{3\\-2\\1}$.  Explain.
+			\item The plane $\mathcal Q$ is the plane $\mathcal P$ translated 
+			in the $\hat y$ direction by one unit.  Let $\vec q\in\mathcal Q$.
+			What is $\vec q\cdot\mat{3\\-2\\1}$?
+		\end{enumerate}
+
+		\item Let $\vec r=\mat{1.5\\1}$ and consider the sets
+		\[
+			A=\{\vec x\in\R^2:\vec x=2t\vec r\text{ for some }t\in\Z\}
+			\qquad
+			B=\{\vec x\in\R^2:\vec x=3t\vec r\text{ for some }t\in\Z\}
+		\]
+		\[
+			C=\{\vec x\in\R^2:\vec x=\vec a+\vec b\text{ for some }\vec a\in A\text{ and }\vec b\in B\}.
+		\]
+		\begin{enumerate}
+			\item On separate axes, draw $A$, $B$, and $C$.
+			\item Prove or disprove the following statements:
+			\begin{enumerate}
+				\item[(i)] $A=\{\vec x\in\R^2:\vec x=t\vec r\text{ for some }t\in\Z\}$
+				\item[(ii)] $C=\{\vec x\in\R^2:\vec x=t\vec r\text{ for some }t\in\Z\}$
+				\item[(iii)] $C=\{\vec x\in\R^2:\vec x=t\vec r\text{ for some }t\in\R\}$
+			\end{enumerate}
+			Make sure to include any relevant definitions. (\emph{Hint:} you may take
+			it as a fact that if $a,b\in \Z$ then $a\pm b\in\Z$ and $ab\in \Z$.)
+		\end{enumerate}
+	\end{enumerate}
+\end{document}
