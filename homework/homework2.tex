@@ -1,0 +1,123 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 281-1}{Homework 2}{Due: Thursday, October 8}{}{}{}
+	\begin{enumerate}
+		\item A rocket follows a straight path.  Its position along the path is $t^2$ 
+			meters from the origin at time $t$.  The radius of the exhaust pipe is governed by the
+			function $r(t) = 8-t^{1/3}$.
+			\begin{enumerate}
+				\item The EPA wants an estimate of the total volume of exhaust from $t=0$ to $t=8$
+					seconds.  They request you estimate this volume by sampling the radius of the 
+					exhaust pipe and the length of the exhaust column at
+					$8$ regularly timed intervals.
+
+					Write and evaluate a summation representing the EPA's requested estimate.
+				\item Use an integral to produce a more accurate estimate of the total amount of exhaust (you 
+					may assume the exhaust in an exhaust column of height $h$ and radius $r$ is 
+					$\pi r^2h$).
+			\end{enumerate}
+
+		\item You travel, starting from the origin and heading in the positive direction, along the
+			$x$-axis with a speed given by $s(x)=\sqrt{x}$ units per second, where $x$ is your position along
+			the $x$-axis.  You sample the height of a function as you travel and discover
+			$h(t)=(2-t)^2$ where $t$ is time in seconds.
+			\begin{enumerate}
+				\item How long does it take you to get to $x=10$?
+				\item Give a relationship between $x$ and $t$.
+				\item Reparameterize $h$ in terms of $x$.
+				\item Write an integral formula for the area under $h$ from $x=0$ to $x=10$.
+			\end{enumerate}
+	\end{enumerate}
+	
+	Recall that $\text{Work}=\vec F\cdot \vec d$ where $\vec F$ is a force vector and
+	$\vec d$ is a displacement vector.
+	
+	\begin{enumerate}[resume]
+		\item A turbulent river pushes a particle at the point $(x,y)$ with a force
+			\[
+				\vec F(x,y) = (-yx,x).
+			\]
+			You are pushing a box through the river from $(0,0)$ to $(1,1)$ along a 
+			straight path.
+			\begin{enumerate}
+				\item Does $\vec F(0,0)\cdot (1,1)$ give you the total work done?
+					How about $\vec F(1,1)\cdot (1,1)$?  Why or why not?
+				\item Suppose you take tiny steps of size $\sqrt{2}/n$ on your way
+					from $(0,0)$ to $(1,1)$.  Write a summation to estimate
+					the total work done by using $\vec F(x,y)\cdot \vec d$ as
+					an approximation of the work done when
+					moving from the origin of $\vec d$
+					to the tip of $\vec d$.
+				\item Write down the integral that results from your summation in
+					(b) when you let $n\to \infty$.
+				\item What is the total work done?
+			\end{enumerate}
+		
+		\item A vector moves along the path $\vec r(t) = \mat{\sin t\\ 2\cos t\\ t}$ through a force field given by
+			$\vec F(x,y,z)=\mat{yz\\ xz\\ xy}$.  Find the total work done between $t=0$ and $t=\pi$.
+
+		\item An \emph{isometric parameterization} of a 2D surface $S$ is a parameterization $p(t,s)$
+			that is area and length preserving.  That is, the speed with respect to the first variable
+			is $1$, the speed with respect to the second variable is $1$, and the area of the image
+			of the square with corners $(\alpha,\beta),(\alpha+1,\beta),(\alpha,\beta+1),(\alpha+1,\beta+1)$ is 1.
+
+			Consider the surface $S\subset \R^3$ parameterized by \[
+				s(x,y) = (x^2,y, |y|^{3/2}).
+			\]
+			Produce an isometric parameterization $p:\R^2\to\R^3$ and verify each 
+			property of the parameterization. (Hint, use a computer to visualize the surface
+			and imagine it as a piece of paper.  How choose easy direction vectors to 
+			parameterize with.  Also, don't forget that $\|\vec a\times \vec b\|$ gives you
+			the area of the parallelogram with sides $\vec a$ and $\vec b$.)
+	\end{enumerate}
+
+\end{document}
