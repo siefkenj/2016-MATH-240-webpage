@@ -1,0 +1,126 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 281-1}{Homework 3}{Due: Thursday, October 29}{}{}{}
+	\begin{enumerate}
+		\item You are designing an oval-shaped race track.  The race track consists of two
+			straight stretches of length 500 meters and two semicircles of radius 100 meters.
+			On a straight stretch, a car attains a maximum speed of 100 meters per second (near the end of the straight stretch).
+			When traveling along a curved stretch, a car experiences a constant deceleration
+			and leaves the curved stretch going 50 meters per second.
+
+			Since you don't want cars to slide off the track as they travel along the curved part
+			of the track, you plan on angling the curved part of the road (like a real race track).
+			Assuming there is no friction (so the only forces a car is subjected to are the acceleration
+			due to its movement and the acceleration due to gravity), compute the angle of elevation of
+			the curved part of the race track so that a car won't slide off (Hint, this won't be constant!).
+
+			You may assume that the acceleration due to gravity is $g$ meters per second squared.
+
+		\item Given a curve $S\subset \R^n$, the \emph{curvature} of $S$ at the point $\vec p\in S$ is the
+			magnitude of the acceleration when passing through $\vec p$ at unit speed (following the curve $S$).
+			That is, if $\vec r(t)$ is an arc length parameterization of $S$ and $\vec r(t_0) = \vec p$, 
+			then the curvature of $S$ at the point $\vec p$ would be $\|\vec a(t_0)\|$.
+
+			\begin{enumerate}
+				\item Let $S_r\subset \R^2$ be a circle of radius $r$ centered at the origin.  
+					Compute the curvature 
+					of $S_r$ at the point $\vec p=(r,0)$.
+				\item Given the following points that lie on the curve $C\subset \R^2$, estimate the curvature
+					of $C$ at $(1,1)$.
+
+					\begin{center}
+					\begin{tabular}{c|c}
+						$x$&$y$\\
+						\hline
+						0.7&0.49\\
+						0.8&0.64\\
+						0.9&0.81\\
+						1&1\\
+						1.1&1.21\\
+						1.2&1.44\\
+						1.3&1.69
+					\end{tabular}
+				\end{center}
+			\end{enumerate}
+
+		\item 
+			\begin{enumerate}
+				\item The level curves of the function $f:\R^2\to [0,\infty)$ are given 
+					in polar coordinates by the function
+					$L(h)=\{(\theta, h):\theta\in [0,2\pi)\}$.  That is, 
+						$L(h)$ gives the level curve $f(x,y)=h$.  Graph the level curves
+						of $f$ and then make a 3d
+						sketch of the surface $(x,y,f(x,y))$.
+					\item The level curves of $g:\R^2\to [1,\infty)$ are given in polar coordinates by the function
+							$L(h)=\{(\theta, \sin(\theta)/h):\theta\in(0,\pi)\}$.
+							Graph the level curves of $g$ and then make a 3d sketch of $(x,y,g(x,y))$.
+			\end{enumerate}
+		\item Determine the following limits if they exist, otherwise show they don't exist.
+			\begin{enumerate}
+				\item $\displaystyle\lim_{(x,y)\to(0,0)} x+y$
+				\item $\displaystyle\lim_{(x,y)\to(0,0)} \frac{x^2-y^2}{x^2+y^2}$
+				\item $\displaystyle\lim_{(x,y)\to(0,0)} \frac{x^2y}{x^4+y^2}$
+			\end{enumerate}
+
+		\item We've seen that for a function $f$ and a direction $\vec u$, $\nabla f(\vec a)\cdot \vec u$ gives
+			the directional derivative at $\vec a$ in the direction $\vec u$ \emph{if $f$ is differentiable}.
+			This last part is key.
+
+			Let $f(x,y) = \frac{x^2y}{x^2+y^2}$ if $(x,y)\neq (0,0)$ and $f(0,0) = 0$.  Use the definition
+			of the directional derivative to compute the directional derivative of $f$ at $(0,0)$ in the direction
+			$\vec u$.  Can the directional derivative be written as $\nabla f(0,0)\cdot \vec u$ for all $\vec u$?
+			How about for some $\vec u$?
+
+			Show that $f$ is not differentiable at $(0,0)$.
+	\end{enumerate}
+
+\end{document}
