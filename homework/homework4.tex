@@ -1,0 +1,133 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\renewcommand{\d}{\mathrm{d}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 281-1}{Homework 4}{Due: Thursday, November 5}{}{}{}
+	\begin{enumerate}
+		\item 
+		\begin{enumerate}
+			\item A valley can modeled by the equation $z=f(x,y)=3e^{xy}$ where $x$ is kilometers
+			north and $y$ is kilometers east.  From a helicopter you observe a
+			hiking trail that appears to be modeled by $x^3+y^3=27$.  Find the highest and
+			lowest points along the hiking trail.
+
+		\item Write down an equation of the tangent plane (in vector form) at the minimum and maximum points
+			along the hiking trail.
+		\end{enumerate}
+		
+		\item Let $\displaystyle A=\int_{x=0}^{x=6}\int_{y=x/3}^{y=2} x\sqrt{y^3+1}\,\d y \d x$.
+		\begin{enumerate}
+			\item Find a region $R$ and a function $f$ so that $\displaystyle A=\iint_R f(x,y) \,\d V$.
+			\item Find $A$.
+		\end{enumerate}
+		
+		\item Let $C$ be a circular path in $\R^3$ that passes through the points
+			$\vec a = (1,2,3)$, $\vec b = (1,1,3)$, and $\vec c = (-1,1,1)$.
+			Let $f:\R^3\to\R$ be distance from the origin.  That is, $f(\vec x) = \|x\|$.
+		\begin{enumerate}
+			\item Find the radius of $C$.  Then find two functions $g:\R^3\to \R$ and
+				$h:\R^3\to \R$ so that $g(\vec x_0) = h(\vec x_0) = 0$ if and only if
+				$\vec x_0\in C$.  (Hint, think about how to make two surfaces intersect
+				at exactly $C$.)
+			\item Could you find a single function $r:\R^3\to \R$ 
+				so that $r(\vec x_0)=0$ if and only if $\vec x_0\in C$?  Why or why not?
+			\item Find a tangent vector to $C$ at the point $\vec c$, and call this 
+				vector $T_{\vec c}$.  Write down vector form of the plane of vectors
+				orthogonal to $T_{\vec c}$.
+			\item Moving along $C$ from the point $\vec c$, how fast is $f$ changing
+				\emph{with respect to distance}?
+			\item Find the minimum and maximum values $f$ attains along the curve $C$.
+				(Hint, it's much easier to find the minimum and maximum values
+				of $f^2$ and use those to minimize/maximize $f$.)
+		\end{enumerate}
+
+
+		\item Consider the stretched polar coordinates system $\mathcal {SP}$.
+			Coordinates in $\mathcal {SP}$ are given by pairs $(\rho, \phi)$ and relate to
+			rectangular coordinates via the equations $x=\rho \cos \phi$ and $y=2\rho\sin \phi$ where $\rho\in[0,\infty)$
+				and $\phi\in[0,2\pi)$.
+		\begin{enumerate}
+			\item Draw the level curves $\rho = m$ for $m\in \{0,1,2,3\}$ and $\phi=n$ 
+				for $n\in\{0,\pi/8,\pi/4,3\pi/8,\pi/2\}$.
+			\item Compute the area enclosed by the curves $\rho=\rho_0$, $\rho=\rho_0+\Delta \rho$,
+				$\phi=\phi_0$, and $\phi=\phi_0+\Delta\phi$ and call this area $\Delta V(\rho_0,\phi_0)$.
+			\item Give an isometric parameterization for{\ldots}just kidding. Instead of forcing a parameterization
+				to preserve area, let's measure how much it changes area.  We'd like to compute
+				the \emph{density} of the coordinate system $\mathcal{SP}$.  Consider the following: 
+				Let $G_n=\{(\frac{i}{n},\frac{j}{n}):i,j\in \Z\}$ be a grid of regularly spaced points.
+				If we interpret $G_n$ as points given in rectangular coordinates and we look at a
+				square of size $\frac{1}{n}\times \frac{1}{n}$, we expect to find one point in that square.
+				That is, if $S_n(x,y)=[x,x+\frac{1}{n})\times[y,y+\frac{1}{n})$ is the square of width $\frac{1}{n}$
+				with lower left corner at the point $(x,y)$, then the size of $S_n(x,y)\cap G_n=1$ regardless of $(x,y)$ and
+				regardless of $n$.  However, if we interpret $G_n$ as specified in $\mathcal{SP}$ coordinates,
+				suddenly the size of $S_n(x,y)\cap G_n$ depends on $(x,y)$ and on $n$. The \emph{density} of $\mathcal{SP}$
+				coordinates at the point $(x,y)$ is defined as
+				\vspace{-.2cm}
+				\[
+					\mathrm{den}(x,y) = \lim_{n\to\infty}\text{expected size of }S_n(x,y)\cap G_n,
+				\]
+				when $G_n$ is interpreted in $\mathcal {SP}$ coordinates.
+				Alternatively (if the \emph{expected size} language is too ambiguous), let
+				$f:\R^2\to\R^2$ be the function defined by $(a,b)\mapsto (a\cos b, 2a\sin b)$
+				that takes $\mathcal{SP}$ coordinates to rectangular coordinates.
+				Then,
+				\[
+					\mathrm{den}(x,y) = \lim_{n\to\infty}\frac{\text{area of }S_n(x,y)}{\text{area of }f(S_n(x,y))},
+				\]
+				where $f(S_n(x,y))$ is the image of $S_n(x,y)$ under $f$.
+
+				\vspace{.3cm}
+				Compute the density of $\mathcal{SP}$ coordinates.
+		\end{enumerate}
+
+	\end{enumerate}
+
+\end{document}
