@@ -1,0 +1,121 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\makescale}{%
+	\par
+	\begin{center}
+	\begin{minipage}{.95\textwidth}
+	{\par
+	\begin{minipage}{1.5in}\footnotesize No knowledge\end{minipage}\hfill
+	\begin{minipage}{1.5in}\footnotesize \centerline{I know the basics}\end{minipage}\hfill
+	\begin{minipage}{1.5in}\footnotesize \raggedleft Advanced Knowledge\end{minipage}
+	\par
+	\vspace{.2cm}
+	\hspace{2em}1\dotfill 2\dotfill3\dotfill4\dotfill5\hspace{2em}
+	\par
+	}
+	\vspace{.6cm}
+	{\par
+	\begin{minipage}{1.7in}\raggedright \footnotesize I'd like a lot of practice and class time focused on this concept\end{minipage}\hfill
+	\begin{minipage}{1.5in}\footnotesize \begin{center}Spending some class time on this would be good\end{center}\end{minipage}\hfill
+	\hspace{.2in}\begin{minipage}{1.5in}\footnotesize \raggedleft With a list of topics, I can study on my own\end{minipage}
+	\par
+	\vspace{.2cm}
+	\hspace{2em}1\dotfill 2\dotfill3\dotfill4\dotfill5\hspace{2em}
+	\par
+	}
+	\end{minipage}
+	\end{center}
+}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 0}{Due: Wednesday, September 21}{}{}{}
+	In this class, we'll be learning a lot of math, but we'll also be \emph{thinking about thinking} 
+	and \emph{learning about learning}.  
+	I'd like to understand your thoughts in this regard.  As such, please type your responses to the following questions. 
+	Your combined answers should be no longer than 2 pages.
+	\begin{enumerate}
+		\item What type of thinking do you expect to do in a math
+		class? How is this type of thinking similar or different
+		to the types of thinking you might do in classes for
+		other subjects?  Please give some examples.
+
+		\item What roles do \emph{you}, \emph{your instructor}, and 
+		\emph{your peers}
+		each play in the process of learning?
+
+		\item In math, how can you tell if you're right or wrong?
+
+		\item In math, is an answer always either right or wrong?  Please explain.
+
+		\item Professors in the English department list
+		``evaluate multiple perspectives,'' ``reframe
+		questions and issues,'' and ``examine central issues
+		and assumptions'' as goals for their courses.	Are these
+		goals relevant to math? Please explain.
+
+		\item Other thoughts?
+	\end{enumerate}
+
+	\newpage
+
+	For each topic, please indicate your current level of experience and how much 
+	support you'd like when learning or reviewing the material.
+
+	\vspace{.4cm}
+	{\bf Complex Numbers}
+	\makescale
+	
+	\vspace{.8cm}
+	{\bf Proofs}
+	\makescale
+	
+	\vspace{.8cm}
+	{\bf Typing Mathematics}
+	\makescale
+\end{document}
