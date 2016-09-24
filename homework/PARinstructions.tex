@@ -1,0 +1,239 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{PAR Instructions}{$\phantom{x}$}{}{}{}
+	\rfoot{\footnotesize\it Based on work of Daniel Reinholz }
+	In this class, we will be spending a lot of time tackling hard concepts
+	and developing deep understanding.  One of the best ways to refine
+	your thinking and to get a boost when you're stuck is to explain
+	your reasoning.  In this class, we will use an exercise called Peer-Assisted
+	Reflection (PAR) to give you practice at analysing your own thoughts
+	as well as understanding how others think.  Research has shown
+	as much as a 20\% improvement in student learning by using PAR.  We're
+	including PAR in this course because we want
+	to provide you with the best learning techniques we know of!
+
+	\begin{enumerate}
+		\item {\bf PAR Basics}
+			\begin{enumerate}
+				\item Roughly one homework problem a week will be designated as a PAR problem.
+					You work on this problem alone or with peers and write up your solution.
+					You will then complete the self-reflection sheet for that problem.
+				\item In discussion section, you will sit in a random seat.
+					This is so you get exposure to a large sample of your peers' work, not just your friends!
+				\item You will exchange write-ups with your neighbor, read it carefully, and spend some time providing
+					them written feedback.  
+					It is important you provide written feedback before you start talking with your partner.
+					When you are reading another
+					student's work, you are focusing on what they've written
+					and how they expressed their thoughts, not the problem itself.
+					(You've already spend a lot of time thinking about the problem!)
+				\item Conference with your neighbor and explain
+					your feedback in words.
+					Providing feedback is not an option. Even the best solutions 
+					can be made better. Even if you did not complete the problem,
+					you can still engage in written feedback and conferencing.
+				\item At home, you revise your PAR question and turn in 
+					your PAR work the next day of class.  Your PAR work includes
+					(i) your draft with comments, (ii) your self-reflection, and
+					(iii) a \emph{typed} final writeup of your PAR question.
+			\end{enumerate}
+		\item {\bf Frequently Asked Questions}
+			\begin{enumerate}
+				\item {\it What if I miss a PAR day? Can I still get credit?}
+				Yes. You can do the peer
+				conference with one of your classmates outside of class and turn the PAR problem in as normal.
+				\item {\it If I didn't solve a PAR problem, do I still participate?}  Yes!  Even
+					if you haven't figured out the problem, you can give valuable feedback and
+					pick up some new ideas from your peers.
+			\end{enumerate}
+	\end{enumerate}
+
+	\section*{Being a Critical Friend}
+
+	Peer-Assisted Reflection (PAR) will help you improve your communication skills and understanding 
+	of this math course. 
+	Writing for someone who does not already understand your problem is a skill that requires
+	practice. We will improve our skills by acting as ``critical friends'' to each other. 
+	Critical friends take the time to fully understand each other's work, 
+	finding the flaws and weaknesses so that they can be improved.
+	Critical friends don't just say ``everything looks good,'' because it provides no room for growth.
+
+	\subsection*{Reading Peer's Solutions}
+	\begin{itemize}
+		\item Try to understand the solution based only on what is
+		written (without thinking of your own solution).  Note any
+		gaps in logic you have to fill in yourself. Tell your
+		partner---these need to be revised.  
+		
+		\item Was the solution
+		justified? What evidence would you need to be sure the
+		solution is correct?  
+	
+		\item Note any calculation or
+		procedural errors you find. Don't just gloss over
+		calculations, but work them out in your head to see
+		if your partner's work makes sense.  
+	
+		\item After you've fully considered what your partner wrote,
+		compare their solution to your own. Did you
+		get the same result? If you used different approaches,
+		were they consistent or did your solutions contradict
+		one another? The more you connect the two solutions, the
+		more you will deepen your understanding.
+	\end{itemize}
+	\subsection*{Peer Conferencing}
+		A few simple guidelines will help you have more meaningful conversations with your partner.
+	\begin{itemize}
+		\item Focus on the mathematical aspects of the solution
+		to the problem \emph{\textbf{and}} how they were communicated.
+
+		\item Ask questions. Encourage your partner to ask
+		questions. Discussing ideas will help you learn.
+
+		\item Demand meaningful feedback. If your partner only
+		says ``everything looks good,'' you learn nothing.
+
+		\item Practice revisions to your explanations (verbally)
+		before writing them. This is a unique opportunity to
+		get instant feedback on your communication. Use it!
+
+		\item If both you and your partner are unsure about the
+		solution, try to figure it out together. Talk through your
+		reasoning, where it got you, and where it got you stuck.
+	\end{itemize}
+
+	\subsection*{Meaningful Feedback}
+		Use the self-reflection questions as a guide for areas you might give feedback to your partner on.
+	\begin{itemize}
+		\item Be specific. Saying ``your explanation was
+			unclear'' is not nearly as useful as saying \emph{why} it
+		was unclear (e.g., ``you used the term asymptote
+		incorrectly.'') If you say \emph{why} you think something,
+		your partner can evaluate your feedback, regardless of
+		your confidence.
+
+		\item Be constructive. As much as possible, don't just
+		say that something needs to be improved, but suggest how
+		it could be improved (e.g., ``asymptotes \emph{can} be touched
+		by the function; you know you have an asymptote because
+		you have a certain limit'').
+
+		\item Try to help your partner learn. If the solution
+		seems to indicate misunderstanding of a concept, spend
+		time talking about that concept until both you and your
+		partner are clear on it. Explaining and discussing
+		concepts with your partner will help you understand
+		them better.
+	\end{itemize}
+
+	\subsection*{Not Very Meaningful Feedback}
+		Here are a number of examples of feedback that are not very helpful for you partner 
+		(\emph{explanations why in
+		italics}). Please refrain from offering these types of feedback.
+
+		{\bf Communication:}
+	\begin{itemize}
+		\item Everything looked good. (\emph{Even the best
+		solutions can be improved. Put more effort into
+		thinking how
+			your partner could do so.})
+
+		\item Your solution was explained well. (\emph{This
+		feedback not only doesn't say what about it was explained
+			well, but it also doesn't help your partner
+			improve.})
+
+		\item Your solution could use a little bit more
+		explanation. (\emph{Tell your partner exactly what
+		needs more explanation and try to suggest how they could
+		improve their explanation. Remember, simply adding \textbf{more}
+		isn't \textbf{always} better.})
+
+		\item Your explanations were a little unclear. (\emph{You need
+		to tell your partner what exactly was unclear, and try
+		to suggest how they could improve it. Try focusing on
+		what you couldn't understand or where you got lost.})
+
+		\item Show a little bit more work. (\emph{Tell your partner
+		exactly where you got confused. You need to be more
+		specific with your feedback.})
+	\end{itemize}
+
+	{\bf Correctness:}
+	\begin{itemize}
+		\item I found an error in part (e). (\emph{Tell your partner what the error was and why it was incorrect.})
+		\item Your answer to part (a) needs improvement. (\emph{Tell your partner what was wrong and how to improve
+			it.})
+		\item I think your solution is wrong. (\emph{Tell your partner what the error was and why it was incorrect.})
+		\item Be sure to finish the problem. (\emph{Your partner probably didn't finish the problem because they didn't
+			know how to. Instead of telling them the obvious, try to help them figure it out.})
+		\item Everything looks good. (\emph{What evidence do you have for saying this? })
+	\end{itemize}
+
+	\subsection*{Strategies for Facilitating Peer-Conferences}
+	Sometimes it may feel like you don't know what to say or how to get better feedback from your peer
+	conferences. If your partner simply says ``it looks good,''
+	it does nothing to help you improve. PAR is a
+	unique opportunity to get feedback and talk about the mathematics in a problem, so make sure that you
+	take advantage of it!
+	Here are some suggestions for things you might say or ask in order to have a more productive 
+	conversation. One key strategy is asking questions about specific aspects of your solution or your partner's
+	solution. Here are some suggestions:
+	\begin{itemize}
+		\item I was struggling with how to communicate X, do you have any suggestions?
+		\item Would it be all right if I practiced my explanation with you before I revise my solution?
+		\item Did you check all of my calculations, and did you find any errors?
+		\item I noticed that we did the problem differently. Can we look together and make sure our solutions are
+		consistent?
+		\item I was unsure about (concept X, or how to do X). Can we talk more about it?
+		\item In your solution, I noticed that you did X. Can you explain why?
+	\end{itemize}
+\end{document}
