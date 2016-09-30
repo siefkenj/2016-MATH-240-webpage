@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage{ifthen}
 \usepackage{fancyhdr}
+
 \usepackage{enumitem}
 
 %%%
@@ -44,80 +45,69 @@
 \newcommand{\Null}{\mathrm{null}}
 \newcommand{\Rank}{\mathrm{rank}}
 \newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\sbv}[1]{\ensuremath{\mathbf{e}_{#1}}}
 
 %%%
 % This is where the body of the document goes
 %%%
 \begin{document}
-	\setheader{Math 281-1}{Homework 2}{Due: Thursday, October 8}{}{}{}
+	\setheader{Math 240}{Homework 2}{Due: Thursday, October 6th}{}{}{}
+	Over the weekend, \textbf{read sections 1.1, 1.2, 1.4, and 2.1} in the textbook.  (Out of 2.1, you just need to read how to multiply matrices.)  You should complete the reading before class on Wednesday, because we'll use the material right away on Wednesday.  Some homework problems require using what you learn in these sections; they are marked with the appropriate section number.
 	\begin{enumerate}
-		\item A rocket follows a straight path.  Its position along the path is $t^2$ 
-			meters from the origin at time $t$.  The radius of the exhaust pipe is governed by the
-			function $r(t) = 8-t^{1/3}$.
-			\begin{enumerate}
-				\item The EPA wants an estimate of the total volume of exhaust from $t=0$ to $t=8$
-					seconds.  They request you estimate this volume by sampling the radius of the 
-					exhaust pipe and the length of the exhaust column at
-					$8$ regularly timed intervals.
-
-					Write and evaluate a summation representing the EPA's requested estimate.
-				\item Use an integral to produce a more accurate estimate of the total amount of exhaust (you 
-					may assume the exhaust in an exhaust column of height $h$ and radius $r$ is 
-					$\pi r^2h$).
-			\end{enumerate}
-
-		\item You travel, starting from the origin and heading in the positive direction, along the
-			$x$-axis with a speed given by $s(x)=\sqrt{x}$ units per second, where $x$ is your position along
-			the $x$-axis.  You sample the height of a function as you travel and discover
-			$h(t)=(2-t)^2$ where $t$ is time in seconds.
-			\begin{enumerate}
-				\item How long does it take you to get to $x=10$?
-				\item Give a relationship between $x$ and $t$.
-				\item Reparameterize $h$ in terms of $x$.
-				\item Write an integral formula for the area under $h$ from $x=0$ to $x=10$.
-			\end{enumerate}
-	\end{enumerate}
-	
-	Recall that $\text{Work}=\vec F\cdot \vec d$ where $\vec F$ is a force vector and
-	$\vec d$ is a displacement vector.
-	
-	\begin{enumerate}[resume]
-		\item A turbulent river pushes a particle at the point $(x,y)$ with a force
-			\[
-				\vec F(x,y) = (-yx,x).
-			\]
-			You are pushing a box through the river from $(0,0)$ to $(1,1)$ along a 
-			straight path.
-			\begin{enumerate}
-				\item Does $\vec F(0,0)\cdot (1,1)$ give you the total work done?
-					How about $\vec F(1,1)\cdot (1,1)$?  Why or why not?
-				\item Suppose you take tiny steps of size $\sqrt{2}/n$ on your way
-					from $(0,0)$ to $(1,1)$.  Write a summation to estimate
-					the total work done by using $\vec F(x,y)\cdot \vec d$ as
-					an approximation of the work done when
-					moving from the origin of $\vec d$
-					to the tip of $\vec d$.
-				\item Write down the integral that results from your summation in
-					(b) when you let $n\to \infty$.
-				\item What is the total work done?
-			\end{enumerate}
 		
-		\item A vector moves along the path $\vec r(t) = \mat{\sin t\\ 2\cos t\\ t}$ through a force field given by
-			$\vec F(x,y,z)=\mat{yz\\ xz\\ xy}$.  Find the total work done between $t=0$ and $t=\pi$.
+		\item (sec. 1.2) Find the reduced row echelon form of each of the following matrices:
+		
+		\begin{tabular}{cc}
+			(a) $\mat{1 & 4 & 1 & -2 \\ 3 & 11 & -4 & 0 \\ 2 & 2 & 1 & 1}$
+			&
+			(b) $\mat{1 & 6 & 4 & 2 \\ 1 & 3 & 1 & 4 \\ 1 & 8 & 6 & -1}$
+		\end{tabular}
+		
+		\item (sec. 2.1) Compute the following matrix products:
+		
+		\begin{tabular}{cc}
+			(a) $\mat{2 & 1 \\ 1 & -1} \mat{1 & 3 \\ 2 & 2}$
+			&
+			(b) $\mat{1 & 1 & 1 & 1 \\ 2 & 1 & 1 & -1} \mat{2 & 3 & 4 \\ 3 & 4 & 5 \\ 4 & 5 & 6 \\ -1 & -1 & -1}$
+		\end{tabular}
+		
+		\item Write each of the following vectors as a linear combination of $\vec{u} = \mat{2\\-1\\-1}$ and $\vec{v} = \mat{1\\3\\1}$, or explain why it is impossible.
+		
+		\begin{tabular}{ccc}
+			(a) $\mat{1\\10\\4}$
+			&
+			(b) $\mat{6\\-4\\2}$
+			&
+			(c) $\mat{0\\0}$
+		\end{tabular}
+		
+		\item Consider the same vectors $\vec{u}$ and $\vec{v}$ from the previous problem.
+		\begin{enumerate}
+			\item What sort of geometric object is $\Span \{\vec{u},\vec{v}\} $?  Explain how you know.
+			\item Give one example of a vector in $\Span \{\vec{u},\vec{v}\} $, and one example of a vector not in $\Span \{\vec{u},\vec{v}\} $.  Explain.
+			\item Is it correct to say that $\Span \{\vec{u},\vec{v}\} = \R^2$?  Why or why not?
+		\end{enumerate}
+		
+		\item Suppose $\vec{u}$, $\vec{v}$, and $\vec{w}$ are nonzero vectors in $\R^3$, and $\vec{u}$ is a linear combination of $\vec{v}$ and $\vec{w}$.
+		\begin{enumerate}
+			\item Can you determine from this information whether or not the set $\{\vec{u}, \vec{v},\vec{w} \}$ is linearly independent?  Explain.
+			\item Can you determine from this information whether or not $\vec{v}$ is a linear combination of $\vec{u}$ and $\vec{w}$?  Explain.
+		\end{enumerate}
+		
+		\item Express each of the following statements in formal mathematical language.  Note that there is more than one way to do so in each case, and your answers may include mathematical vocabulary as wells as expressions (sets, formulas, equations, etc.).  $\vec{u}$, $\vec{v}$, and $\vec{w}$ represent fixed vectors in $\R^2$.
+		\begin{enumerate}
+			\item By traveling in the direction of $\vec{u}$ and then the direction of $\vec{v}$, you can reach any point in the $xy$-plane.
+			\item By traveling in the direction of $\vec{w}$ and then the direction $\vec{v}$, you cannot reach the point $(2,18)$.
+			\item Starting anywhere, you can make a ``loop'' traveling only in the directions of $\vec{u}$, $\vec{v}$, and $\vec{w}$, and come back to where you started.
+		\end{enumerate}
 
-		\item An \emph{isometric parameterization} of a 2D surface $S$ is a parameterization $p(t,s)$
-			that is area and length preserving.  That is, the speed with respect to the first variable
-			is $1$, the speed with respect to the second variable is $1$, and the area of the image
-			of the square with corners $(\alpha,\beta),(\alpha+1,\beta),(\alpha,\beta+1),(\alpha+1,\beta+1)$ is 1.
-
-			Consider the surface $S\subset \R^3$ parameterized by \[
-				s(x,y) = (x^2,y, |y|^{3/2}).
-			\]
-			Produce an isometric parameterization $p:\R^2\to\R^3$ and verify each 
-			property of the parameterization. (Hint, use a computer to visualize the surface
-			and imagine it as a piece of paper.  Now choose easy direction vectors to 
-			parameterize with.  Also, don't forget that $\|\vec a\times \vec b\|$ gives you
-			the area of the parallelogram with sides $\vec a$ and $\vec b$.)
+		
 	\end{enumerate}
+	
+	\textbf{Don't forget to also complete PAR2, this week's Peer-Assisted Reflection problems.}
+	
+
+
+
 
 \end{document}
