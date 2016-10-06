@@ -49,78 +49,109 @@
 % This is where the body of the document goes
 %%%
 \begin{document}
-	\setheader{Math 281-1}{Homework 3}{Due: Thursday, October 29}{}{}{}
+	\setheader{Math 281-1}{Homework 3}{Due: Thursday, October 20}{}{}{}
 	\begin{enumerate}
-		\item You are designing an oval-shaped race track.  The race track consists of two
-			straight stretches of length 500 meters and two semicircles of radius 100 meters.
-			On a straight stretch, a car attains a maximum speed of 100 meters per second (near the end of the straight stretch).
-			When traveling along a curved stretch, a car experiences a constant deceleration
-			and leaves the curved stretch going 50 meters per second.
-
-			Since you don't want cars to slide off the track as they travel along the curved part
-			of the track, you plan on angling the curved part of the road (like a real race track).
-			Assuming there is no friction (so the only forces a car is subjected to are the acceleration
-			due to its movement and the acceleration due to gravity), compute the angle of elevation of
-			the curved part of the race track so that a car won't slide off (Hint, this won't be constant!).
-
-			You may assume that the acceleration due to gravity is $g$ meters per second squared.
-
-		\item Given a curve $S\subset \R^n$, the \emph{curvature} of $S$ at the point $\vec p\in S$ is the
-			magnitude of the acceleration when passing through $\vec p$ at unit speed (following the curve $S$).
-			That is, if $\vec r(t)$ is an arc length parameterization of $S$ and $\vec r(t_0) = \vec p$, 
-			then the curvature of $S$ at the point $\vec p$ would be $\|\vec a(t_0)\|$.
-
+		\item Let $\vec a=\mat{1\\2\\3}$, $\vec b=\mat{4\\5\\6}$, $\vec c=\mat{d\\1\\1}$, and $\vec w=\mat{w_1\\w_2\\w_3}$
+			be vectors where $d,w_1,w_2,w_3\in\R$ are unknown constants.
 			\begin{enumerate}
-				\item Let $S_r\subset \R^2$ be a circle of radius $r$ centered at the origin.  
-					Compute the curvature 
-					of $S_r$ at the point $\vec p=(r,0)$.
-				\item Given the following points that lie on the curve $C\subset \R^2$, estimate the curvature
-					of $C$ at $(1,1)$.
-
-					\begin{center}
-					\begin{tabular}{c|c}
-						$x$&$y$\\
-						\hline
-						0.7&0.49\\
-						0.8&0.64\\
-						0.9&0.81\\
-						1&1\\
-						1.1&1.21\\
-						1.2&1.44\\
-						1.3&1.69
-					\end{tabular}
-				\end{center}
+			\item For what values of $d$ is $\{\vec a,\vec b,\vec c\}$ linearly
+			independent?  For which values of $d$ is $\{\vec a,\vec b,\vec c\}$ linearly dependent?
+			\item Write down the system of equations coming from the rows of the vector equation
+				\[
+					x\vec a+y\vec b+z\vec c=\vec w.
+				\]
+			\item Give three numeric examples of different vectors $\vec w$ such that the above system is consistent
+				no matter what $d$ is. Explain.
+			\item Give a numeric example of a vector $\vec w$ such that the above system is only 
+				consistent for some $d$. Explain.
+			\end{enumerate}
+		\item \begin{enumerate}
+				\item Use an augmented matrix to solve
+					\begin{align*}
+						x+y&=7\\
+						2x-3y&=13.
+					\end{align*}
+					Are there any values you could replace the right hand side of the equations with
+					such that there would be no solution?  Explain both \emph{geometrically}
+					(using vectors, span, etc.) and \emph{algebraically} (using systems, consistency,
+					etc.) using technical linear algebra terms.
+				\item 
+				Consider the system given by the augmented matrix
+				\[
+					C=\left[\begin{array}{ccccc|c}
+						1&0&1&2&0&-1\\
+						0&1&1&0&0&3\\
+						0&0&0&0&1&4
+					\end{array}\right].
+				\]
+				and call the variables in this system $x_1,x_2,
+				x_3,x_4,x_5$.  Write all solutions to this system in vector form.
+				How many free variables are there?
+				\item There are 10 ways to pick two things from the set $\{x_1,x_2,x_3,x_4,x_5\}$.
+					For each of the ten ways, determine whether that pair is a valid choice
+					of free variables for $C$.
+				\item Write down all solutions to the homogeneous system corresponding to $C$ 
+					(i.e., when the right-hand side is replaced with all zeros).  How does this
+					set of solutions compare to the set of solutions of $C$?
+			\end{enumerate}
+		\item Let $M=\mat{3&2&3\\0&0&1\\2&1&0}$ and $\vec w=\mat{1\\2\\-1}$.
+			\begin{enumerate}
+				\item Find solutions $\vec v_1$, $\vec v_2$, and $\vec v_3$ to the three matrix
+					equations
+					\[
+						M\vec v_1=\vec e_1\qquad M\vec v_2=\vec e_2\qquad M\vec v_3=\vec e_3.
+					\]
+				\item Compute $M(a\vec v_1)$ and $M(a\vec v_1+b\vec v_2)$ (where $\vec v_i$ are from above)
+					where $a,b\in\R$ are unknown scalars.
+					Was what happened a surprise?
+				\item Express the solution to the matrix equation $M\vec x=\vec w$ as a linear combination
+					of $\vec v_1$, $\vec v_2$, and $\vec v_3$.  (Recall, $\vec w$ is defined at the beginning
+					of the problem.)
+				\item Let $V=[\vec v_1|\vec v_2|\vec v_3]$ be the matrix whose columns are $\vec v_1$, $\vec v_2$,
+					and $\vec v_3$.  Compute the matrix product $MV$.  Explain why you got the
+					result you did.
+				\item Can you use $V$ to help you solve the system
+					\[
+						M\vec x=\mat{a\\b\\c}?
+					\]
+					If so, explain how and do so.
+				\item Compute the matrix product $VM$.  Can you explain why you got what you did?
+					(\emph{Hint: you might have to think about linear transformations for this one.})
 			\end{enumerate}
 
-		\item 
+		\item Consider the transformations $A:\R^2\to \R^2$ and $B:\R^2\to \R^2$ given by
+			the formulas
+			\[
+				A(x,y) = (x-y, x+y)\qquad\text{and}\qquad B(x,y)=(x^2,y^2).
+			\]
 			\begin{enumerate}
-				\item The level curves of the function $f:\R^2\to [0,\infty)$ are given 
-					in polar coordinates by the function
-					$L(h)=\{(\theta, h):\theta\in [0,2\pi)\}$.  That is, 
-						$L(h)$ gives the level curve $f(x,y)=h$.  Graph the level curves
-						of $f$ and then make a 3d
-						sketch of the surface $(x,y,f(x,y))$.
-					\item The level curves of $g:\R^2\to [1,\infty)$ are given in polar coordinates by the function
-							$L(h)=\{(\theta, \sin(\theta)/h):\theta\in(0,\pi)\}$.
-							Graph the level curves of $g$ and then make a 3d sketch of $(x,y,g(x,y))$.
+				\item Compute $A(\vec e_1)$, $A(\vec e_2)$, $A(\vec e_1+\vec e_2)$,
+					$B(\vec e_1)$, $B(\vec e_2)$, and $B(\vec e_1+\vec e_2)$.
+				\item Find a matrix $M_A$ so that $A$ is given by matrix
+					multiplication, or explain why it is impossible.
+				\item Find a matrix $M_B$ so that $B$ is given by matrix
+					multiplication, or explain why it is impossible.
+				\item A function $X:\R^n\to\R^m$ is called \emph{linear} if it satisfies:
+					\begin{enumerate}
+						\item $X(\alpha \vec v) = \alpha X(\vec v)$ for all $\vec v\in \R^n$
+					and all $\alpha\in \R$ {\bf and} 
+						\item $X(\vec v+\vec w) = X(\vec v)
+					+X(\vec w)$ for all $\vec v, \vec w\in \R^n$.
+					\end{enumerate}
+
+					For each of $A$ and $B$, determine whether or not it is a linear function. Prove your answers.
+
 			\end{enumerate}
-		\item Determine the following limits if they exist, otherwise show they don't exist.
-			\begin{enumerate}
-				\item $\displaystyle\lim_{(x,y)\to(0,0)} x+y$
-				\item $\displaystyle\lim_{(x,y)\to(0,0)} \frac{x^2-y^2}{x^2+y^2}$
-				\item $\displaystyle\lim_{(x,y)\to(0,0)} \frac{x^2y}{x^4+y^2}$
+		\item \begin{enumerate}
+				\item Let $\vec v\in \R^n$ and define the function $d_{\vec v}:\R^n\to\R$ by
+					$d_{\vec v}(\vec w) = \vec v\cdot \vec w$.  Prove that $d_{\vec v}$
+					is linear.  (\emph{Hint: you should be having flashbacks to homework 1}.)
+				\item For a $2\times 2$ matrix $M$, let $f_{M}:\R^2\to\R^2$ be defined by
+					$f_M(\vec v) = M\vec v$, where $\vec v$ is a column vector.  Prove that
+					$f_M$ is a linear transformation.
+				\item Make a conjecture about functions that can be computed using matrix
+					multiplication and their linearity.
 			\end{enumerate}
-
-		\item We've seen that for a function $f$ and a direction $\vec u$, $\nabla f(\vec a)\cdot \vec u$ gives
-			the directional derivative at $\vec a$ in the direction $\vec u$ \emph{if $f$ is differentiable}.
-			This last part is key.
-
-			Let $f(x,y) = \frac{x^2y}{x^2+y^2}$ if $(x,y)\neq (0,0)$ and $f(0,0) = 0$.  Use the definition
-			of the directional derivative to compute the directional derivative of $f$ at $(0,0)$ in the direction
-			$\vec u$.  Can the directional derivative be written as $\nabla f(0,0)\cdot \vec u$ for all $\vec u$?
-			How about for some $\vec u$?
-
-			Show that $f$ is not differentiable at $(0,0)$.
 	\end{enumerate}
 
 \end{document}
