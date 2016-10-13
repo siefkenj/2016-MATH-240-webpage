@@ -1,0 +1,68 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+\usepackage{enumitem}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[2]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\sbv}[1]{\ensuremath{\mathbf{e}_{#1}}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 1 Solution}
+	
+	\begin{enumerate}
+		\item  
+			\begin{enumerate}[label=\null]				\item $\displaystyle \hat{u} = \frac{1}{\sqrt{2^2 + 1^2}} \left< 2, -1 \right> = \left< \frac{2}{\sqrt{5}}, -\frac{1}{\sqrt{5}}\right>$ 				\item $\displaystyle \hat{v} = \frac{1}{\sqrt{1^2 + 3^2}} \left<1, 3 \right> = \left< \frac{1}{\sqrt{10}}, \frac{3}{\sqrt{10}} \right>$				\item $\displaystyle \hat{w} = \frac{1}{\sqrt{1^2 + 1^2 + 1^2}} \left< -1, -1, -1 \right> = \left< \frac{-1}{\sqrt{3}}, \frac{-1}{\sqrt{3}}, \frac{-1}{\sqrt{3}} \right>$				\item $\displaystyle \vec{r} = \left< \frac{1}{\sqrt{10} - \frac{1}{\sqrt{3}}, \frac{3}{\sqrt{10}}} - \frac{1}{\sqrt{3}, \frac{-1}{\sqrt{3}}} \right> = \left< \frac{\sqrt{3} - \sqrt{10}}{\sqrt{30}}, \frac{3 \sqrt{3} - \sqrt{10}}{\sqrt{30}}, \frac{-\sqrt{10}}{\sqrt{30}}\right>$. 
+							
+					Hence $\displaystyle \left| \vec{r}^2\right| = \frac{3 + 10 - 2 \sqrt{30} + 27 + 10 - 6 \sqrt{30} + 10}{30} = \frac{60 - 8\sqrt{30}}{30} = \frac{30 - 4 \sqrt{30}}{15}$. Thus, 
+								$\displaystyle \hat{r} = \frac{\vec{r}}{\left| \vec{r} \right|} = \sqrt{\frac{30 - 4 \sqrt{30}}{15}} \left< \frac{\sqrt{3} - \sqrt{10}}{\sqrt{30}}, \frac{3 \sqrt{3} -\sqrt{10}}{\sqrt{30}}, \frac{-\sqrt{10}}{\sqrt{30}} \right> $
+			\end{enumerate}
+		
+		\item	
+			\begin{enumerate}
+				\item $\mat{a_1 \\ a_2 \\ \vdots \\ a_n } \mat{b_1 \\ b_2 \\ \vdots \\ b_n} = \sum_{i=1}^n a_i b_i.$ 				Assume $\vec{a} = \left< a_1, a_2, ..., a_n\right>, \vec{b} = \left< b_1, b_2, ..., b_n\right>$ and $\vec{c} = \left< c_1, c_2,..., c_n \right>$. Then,				\item $\vec{a}.(\alpha \vec{b}) = \left< a_1, a_2, ..., a_n \right> \cdot \left< \alpha b_1, \alpha b_2, ..., \alpha b_n \right> \\
+					= \sum_{i=1}^n a_i \alpha b_i = \alpha \sum_{i=1}^n a_i bi = \alpha \left( \left< a_1, a_2, ..., a_n \right> \cdot \left< b_1, b_2, ..., b_n \right> \right) = \alpha \left( \vec{a} \cdot \vec{b} \right) $				\item $ \vec{a}. \left( \vec{b} + \vec{c} \right) = \left< a_1, a_2, ..., a_n \right> \cdot \left< b_1 + c_1, b_2 + c_2, ..., b_n + c_n \right> \\
+					= \sum_{i=1}^n a_i \left( b_i + c_i \right) = \sum_{i=1}^n a_i b_i + \sum_{i=1}^n a_i c_i \\
+					= \left< a_1, a_2, ..., a_n \right> \cdot \left< b_1, b_2, ..., b_n \right> + \left< a_1, a_2, ..., a_n \right> \cdot \left<c_1, c_2, ..., c_n \right> = \vec{a} \cdot \vec{b} + \vec{a} \cdot \vec{c}$			\end{enumerate}		\item 			\begin{enumerate} 				\item Suppose $\vec{p} = \left< x_p, y_p, z_p \right>$ where $x_p, y_p, z_p \in \mathbb{R}$. Since $\vec{p}$ is a point in $\mathcal{P}$, $x_p, y_p$ and $z_p$ satisfy equation:					$$3x_p - 2y_p + z_p = 4$$					Hence $\vec{p} \cdot \left< 3 , -2, 1 \right> = \left<x_p, y_p, z_p \right> \cdot \left< 3, -2, 1 \right> = 3x_p - 2y_p + z_p = 4$.				\item Plane $\mathcal{Q}$ is a translation of plane $\mathcal{P}$ in $y$-direction $1$ unit. Hence it has equation $3x - 2(y-1) + z = 4$, or equivalently 
+					$$3x - 2y + z = 2$$
+					Similar to part(a), $\vec{q} \cdot \left<3, -2, 1 \right> = 2$.			\end{enumerate}		\item 			\begin{enumerate}				\item Write $a \mat{3 \\ 1} + b \mat{1 \\ 2} = \mat{107 \\ 64} \; (a,b \in \mathbb{R})$.					We do row reduction to augmented matrix to find solution for above equation:					$$\mat{3 & 1 & 107 \\ 1 & 2 & 64} \xrightarrow{(1) - 3 (2)} \mat{0 & -5 & -85 \\ 1 & 2 & 64} \xrightarrow{\frac{-1}{5} (1)} \mat{0 & 1 & 17 \\ 1 & 2 & 64} \xrightarrow{(2) - 2(1)} \mat{0 & 1 & 17 \\ 1 & 0 & 30}$$.					Hence $a = 30, b = 17$. 				\item We want to solve for $a, b \in \mathbb{R}$ in the equation $a \mat{3 \\ 1} + b \mat{1 \\ 2} = \mat{-99 \\ -100}$.					We do row reduction to augmented matrix to find solution for above equation:					$$ \mat{3 & 1 & -99 \\ 1 & 2 & -100} \xrightarrow{(1) - 3(2)} \mat{0 & -5 & 201 \\ 1 & 2 & -100} \xrightarrow{\frac{-1}{5}(1)} \mat{0 & 1 & \frac{-201}{5}\\ 1 & 2 & -100} \xrightarrow{(2) - 2(1)} \mat{0 & 1 & \frac{-201}{5} \\ 1 & 0 & \frac{-98}{5}}$$					Thus $a = \frac{-98}{5}$ and $b = \frac{-201}{5}$. 				\item Let $\vec{u} = \mat{1 \\ 0 \\ 1}, \vec{b} = \mat{2 \\ 0 \\ 0},$ and $\vec{c} = \mat{0 \\ 0 \\ -1}$. A linear combination of $\vec{u}, \vec{v}, \vec{w}$ has the form $a \vec{u} + b\vec{v} + c\vec{w} = \mat{a + 2b \\ 0 \\ a-c}$. The resulting vector has the form $\mat{x \\ 0 \\ z}$ where $x, z \in \mathbb{R}$. 					In fact any vector of that form is a linear combination of $\vec{u}, \vec{v}$ and $\vec{w}$. It is because for any $x, z \in \mathbb{R}$, the system of equation					$$\begin{cases} a + 2b = x \\ a - c = z \end{cases}$$					always has solution $\begin{cases} a = 0 \\ b = \frac{x}{2} \\ c = -z \end{cases}$.
+			\end{enumerate}	\end{enumerate}
+
+\end{document}

@@ -1,0 +1,130 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+
+%\usepackage{enumitem}
+\usepackage{mathtools}
+
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+\usepackage[bottom=1in]{geometry}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[2]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\sbv}[1]{\ensuremath{\mathbf{e}_{#1}}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 2 Solution}
+
+	\begin{enumerate}
+	    \item 
+	        \begin{enumerate}
+	            \item $\mat{1 & 4 & 1 & -2 \\ 3 & 11 & -4 & 0 \\ 2 & 2 & 1 & 1} \xrightarrow[R2 - 3 R1]{R3 - 2R1} \mat{1 & 4& 1 & -2 \\ 0 & -1 & -7 & 6 \\ 0 & -6 & -1 & 5 } \xrightarrow{-1R2} \mat{1 & 4 & 1 -2\\ 0 & 1 & 7 & -6\\ 0 & -6 & -1 & 5 } \xrightarrow[R1 - 4R2] {R3 + 6 R2} \mat{1 & 0 & -27 & 22\\ 0 & 1 & 7 & -6\\ 0 & 0 & 41 & -31} \xrightarrow{1/41 R3} \mat{1 & 0 & -27 & 22\\ 0 & 1 & 7 & -6\\ 0 & 0 & 1 & -\frac{31}{41}} \xrightarrow[R1 + 27 R3]{ R2 - 7R3} \mat{1 & 0 & 0 & \frac{65}{41} \\ 0 & 1 & 0 & -\frac{29}{41} \\ 0 & 0 & 1 & -\frac{31}{41}}$
+	        
+	           \item $\mat{1 & 6 & 4 & 2\\ 1 & 3 & 1 & 4 \\ 1 & 8 & 6 & -1} \xrightarrow[R2 - R1]{R3-R1} \mat{1 & 6 & 4& 2\\0 & -3 & -3 & 2\\ 0 & 2 & 2 & -3} \xrightarrow{-1/3 R2} \mat{1 & 6 & 4 & 2\\0 & 1 & 1 & -\frac{2}{3} \\ 0 & 2 & 2 & -3} \xrightarrow[R1 - 6R2]{ R3 - 2 R2} \\
+	           \mat{1 & 0 & -2 & 6\\ 0 & 1 & 1 & -\frac{2}{3} \\ 0 & 0 & 0 & -\frac{5}{3}} \xrightarrow{-3/5 R3} \mat{1 & 0 & -2 & 6 \\ 0 & 1 & 1 & -\frac{2}{3}\\ 0 & 0 & 0 & 1} \xrightarrow[R1 - 6 R3] {R2 + 2/3R3} \mat{1 & 0 & -2 & 0 \\ 0 & 1 & 1 & 0 \\ 0 & 0 & 0 & 1}$
+	        \end{enumerate}
+	    
+	    \item 
+	        \begin{enumerate}
+	            \item $\mat{2 & 1 \\ 1 & -1} \cdot \mat{1 & 3 \\ 2 & 2} = \mat{4 & 8 \\ -1 & 1}$
+	            \item $\mat{1 & 1 & 1 & 1\\ 2 & 1 & 1 & -1} \cdot \mat{2 & 3 & 4 \\ 3 & 4 & 5 \\  4 & 5 & 6 \\ -1 & -1 & -1} = \mat{8 & 11 & 14 \\ 12 & 16 & 20} $
+	        \end{enumerate}
+	        
+	    \item
+	        \begin{enumerate}
+	            \item We need to find $a, b \in \mathbb{R}$ such that:
+	                $$ a \mat{2 \\ -1 \\ -1} + b \mat{1 \\ 3 \\ 1} = \mat{1 \\ 10 \\ 4}$$
+	                
+	            Augmented matrix for above equation and its row-reduced-echelon form:
+	            
+	                $ \mat{2 & 1 & 1 \\ - 1& 3 & 10 \\ -1 & 1 & 4} \xrightarrow{R1 - R3} \mat{-1 & 1 & 4 \\ -1 & 3 & 10 \\ 2 & 1 & 1} \xrightarrow{-1 R 1} \mat{1 & -1 & -4 \\ -1 & 3 & 10 \\ 2 & 1 & 1} \xrightarrow[R2 + R1]{ R3 - 2 R1} \mat{1 & -1 & -4 \\ 0 & 2 & 6 \\ 0 & 3 & 9 } \xrightarrow[1/2 R2]{1/3 R3} \mat{1 & -1 & -4 \\ 0 & 1 & 3\\ 0 & 1 & 3} \xrightarrow[R1 + R2]{ R3 - R2} \mat{1 & 0 & - 1\\ 0 & 1 & 3 \\ 0 & 0 & 0 }$
+	                
+	            Hence $a = -1$ and $b = 3$.
+	            
+	            \item $a \mat{2 \\ - 1 \\ -1} + b \mat{1 \\ 3 \\ 1} = \mat{6 & -4 & 2}$
+	            
+	            Augmented matrix and its row reduced echelon:
+	            
+	            $\mat{2 & 1 & 6 \\ -1 & 3 & -4 \\ -1 & 1 & 2} \xrightarrow{R1 \leftrightarrow R3} \mat{-1 & 1 & 2\\ -1 & 3 & -4\\ 2 & 1 & 6} \xrightarrow{-1R1} \mat{1 & -1 & -2\\ -1 & 3 & -4 \\ 2 & 1 & 6} \xrightarrow[R2 + R1]{R3 - 2R1} \mat{1 & -1 & -2\\ 0 & 2 & - 6 \\ 0 & 3 & 10} \xrightarrow{1/3 R2} \mat{1 & - 1 & -2\\ 0 & 1 & -3\\ 0 & 3 & 10} \xrightarrow[R1 + R2]{ R3 - 3 R2} \mat{1 & 0 & - 5 \\ 0 & 1 & -3 \\ 0 & 0 & 19}$
+	            
+	            The row reduced echelon matrix is inconsistent. Thus $\mat{6 \\ -4 \\ 2}$ cannot be written as a linear combination of $\vec{u}$ and $\vec{v}$.
+	            
+	            \item It is impossible to write $\mat{0\\0}$ as a linear combination of $\vec{u}$ and $\vec{v}$ because $\mat{0\\0} \in \mathbb{R}^2$ while $\vec{u}, \vec{v} \in \mathbb{R}^3$.
+	        \end{enumerate}
+	        
+	    \item 
+	        \begin{enumerate}
+	            \item Neither $\vec{u}$ nor $\vec{v}$ is a multiple of the other. 
+			    Hence $\vec{u}$ and $\vec{v}$ are linearly independent. Therefore, $\mathrm{span}\{ \vec{u}, \vec{v}\}$ is a plane. 
+	            
+	            \item 
+			\begin{itemize}
+	                \item An example of vector in span of $\{\vec{u}, \vec{v} \}$ is vector $2 \vec{u} = \mat{4 \\ -2 \\ -2}$.
+	                
+	                \item Example of vector not in span of $\{ \vec{u}, \vec{v}\}$ is vector $\mat{6 \\ -4 \\ 2}$ as proved in Question 3. 
+	                
+	                \item No, since span of $\{\vec{u}, \vec{v}\} $ is a subset of $\mathbb{R}^3$ while $\mathbb R^2$ is not a subset of $\mathbb{R}^3$.
+	            \end{itemize}
+	       
+	        \end{enumerate}
+	        
+	    \item Assume $\vec{u} = a \vec{v} + b \vec{w}$ where $a, b \in \mathbb{R}$.
+	        \begin{enumerate}
+	            \item They are linearly dependent because zero vector is a non trivial linear combination of them: $0 = -\vec{u} + a \vec{v} + b \vec{w}$.
+	            
+	            \item No, we cannot guarantee that $\vec{v}$ is a linear combination of $\vec{u}$ and $\vec{w}$. To be more precise,
+	                \begin{itemize}
+	                    \item If $a \neq 0$, then $\vec{v} = \frac{1}{a} \vec{u} - \frac{b}{a} \vec{w}$. Thus $\vec{v}$ is a linear combination of $\vec{u}$ and $\vec{w}$.
+	                    
+	                    \item However if $a = 0$, i.e $\vec{u} = b \vec{w}$, then nothing can be said about $\vec{v}$.
+	                \end{itemize}
+	                
+	                
+	        \end{enumerate}
+	        
+	    \item \begin{enumerate}
+			    \item $\mathrm{span}\{ \vec{u}, \vec{v} \} = \mathbb{R}^2$.
+	        
+		\item $\mat{2 \\ 18} \not \in \mathrm{span} \{\vec{w}, \vec{v} \}$.
+	        
+	        \item The vectors $\vec u,\vec v,\vec w$ are linearly dependent. 
+	    \end{enumerate}
+	\end{enumerate}
+	
+\end{document}
