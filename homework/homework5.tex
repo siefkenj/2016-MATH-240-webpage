@@ -50,146 +50,57 @@
 % This is where the body of the document goes
 %%%
 \begin{document}
-	\setheader{Math 281-1}{Homework 5}{Due: Thursday, November 19}{}{}{}
+	\setheader{Math 240}{Homework 5}{Due: Thursday, November 3}{}{}{}
+	\emph{We are nearly experts at typing by now.  Though you are not required
+	to type your homework, it's strongly encouraged.  You can even download
+	the \texttt{tex} file for this homework and type your answers below
+	each problem.  Using the} \verb!\begin{quote}! \emph{and} \verb!\end{quote}! \emph{environment
+		will indent anything you type inbetween.  Perfect for typing answers!}
 	\begin{enumerate}
-		\item
-		Consider the stretched and skewed coordinate system $\mathcal {SC}$ for $\R^2$ where
-		the point $(a,b)$ in $\mathcal {SC}$ coordinates is related to $(x,y)$ in rectangular
-		coordinates by
-		\[
-			x=a-b\qquad \qquad y=2a+b.
-		\]
-		Let $B=\{(x,y): 0\leq x\leq 1\text{ and }0\leq y\leq 1\}$ specified in rectangular coordinates.
+		\item Let $A$ and $B$ be $n\times n$ invertible matrices and let $X=AB$.  Does
+			$X^{-1}=A^{-1}B^{-1}$ or does $X^{-1}=B^{-1}A^{-1}$ or neither? Explain.
+		\item For each of the following sets, determine whether or
+			not it is a subspace.  Explain your answer.
+			
 		\begin{enumerate}
-			\item Specify $B$ in $\mathcal {SC}$ coordinates.
-
-			\item Compute the volume form for $\mathcal {SC}$ coordinates.
-
-			\item Set up an integral to find the area of $B$ using $\mathcal {SC}$ coordinates. (Hint,
-				you already know the area is 1, so make sure to check your answer!)
-		\end{enumerate}
-		
-		\item Read about spherical coordinates in the Evans text (or another source of your choosing).
-		\begin{enumerate}
-			\item Write $(\rho, \theta, \phi) = (1,\pi/6,\pi/8)$ in rectangular coordinates.
-			\item Write down the volume form for spherical coordinates (you don't need to derive
-				it, just write it down).
-			\item Let $H=\{(x,y,z): x^2+y^2+z^2 \leq 9\text{ and }z \geq 0\}$.  Describe $H$ geometrically.
-			\item Let $f(x,y,z) = 9-x^2-y^2$.  Find $\displaystyle \int_H f\,\d V$.
-
+			\item ${A}=\left\{\vec x:\vec x\cdot \mat{2\\3}=0\right\}\subseteq \R^2$ 
+			\item ${B}\subseteq \R^3$ is the plane with normal vector $\vec n=\mat{1\\1\\-1}$ passing through
+				the point $\mat{2\\2\\4}$.
+			\item ${C}\subseteq \R^3$ is the $x$-axis.
+			\item ${D}\subseteq \R^3$ is the plane given in vector form as $\vec x=t\mat{1\\1\\1}+s\mat{-2\\3\\-1}+\mat{0\\1\\5}$.
+			\item ${E}=\{(x,y):y=3x+4\}\subseteq \R^2$.
+			\item ${F}=\Span\{\vec u_1, \vec u_2\}\subseteq \R^2$ where $\vec u_1=\mat{1\\0}$ and $\vec u_2=\mat{2\\0}$.
+			\item ${G}\subseteq \R^4$ is the set of all solutions to the matrix equation $\mat{1&1&0&-2\\0&3&0&0\\0&1&0&0}\vec x=\mat{0\\0\\0}$.
+			\item ${H}=\{(x,y): xy=0\}\subseteq \R^2$.
 		\end{enumerate}
 
-		\item A \emph{torus} is the surface of a doughnut.  Let $\mathcal T$ be a torus with 
-			major radius $R=3$ and minor radius $r=1$.  To visualize how $R$ and $r$
-			relate to the torus, imagine slicing it in half.  Looking from the side,
-			you see two circles of radius $r$ and the centers of those two circles
-			are separated by the diameter $2R$.
-		\begin{enumerate}
-			\item Find a parameterization $\vec t:[0,2\pi)\times [0,2\pi)\to \mathcal T\subset \R^3$
-				of the torus with the properties that: (i) the speed with respect to
-				the first parameter is constant, (ii) the speed with respect to the second
-				parameter is constant, and (iii) $\vec t(\theta, 0)$ traces out a circle
-				of radius $R-r$.  (Note that although the speed with respect to
-				each parameter is constant as that parameter varies and the other parameter
-				is held constant, it certainly
-				doesn't need to be the same constant for different values of your constant parameter!)
-			\item Is your parameterization an isometric parameterization?  Why or why not?
-			\item Let $X_1 =\{(\theta, \phi): 0\leq \phi\leq \pi/2\text{ and }0\leq \theta < 2\pi\}$
-				and $X_2 =\{(\theta, \phi): \pi/2\leq \phi\leq \pi\text{ and }0\leq \theta < 2\pi\}$.
-					You meet a strange baker who looks at your parameterization $\vec t$ and says,
-				``I will bake you a doughnut, fine student.  And, I will frost this doughnut!
-				But, you have a choice\ldots{}I with either cover the region $\vec t(X_1)$ or
-				$\vec t(X_2)$ with a layer of frosting $0.1$in thick.''  Being hungry, you crave
-				the most possible frosting.  Which choice should you take, or does it even matter?
-			\item Let $Y_1 =\{(\theta, \phi): \phi=\pi/200,2\pi/200,\ldots, 100\pi/200\text{ and }\theta
-				=\pi/200,2\pi/200,\ldots, 400\pi/200\}$ and 
-				$Y_2 =\{(\theta, \phi): \phi=101\pi/200,102\pi/200,\ldots,200\pi/200\text{ and }\theta
-				=\pi/200,2\pi/200,\ldots, 400\pi/200\}$.
-				Again the baker announces, ``Fine student, I will bake you a doughnut.  And, I will
-				sprinkle this doughnut! But, you get a choice\ldots{}I will either place
-				one sprinkle at each point in $\vec t(Y_1)$ or one sprinkle at each point in 
-				$\vec t(Y_2)$.''  If you want the most sprinkles, which option should you take, or
-				does it even matter?
-			\item The baker finally goes to make your doughnut but is sloppy and spills icing
-				over the entire top of the doughnut.  However, the icing is slippery and
-				deposits on the doughnut with a depth given by $0.1\hat n\cdot \hat z$ where
-				$\hat n$ is the unit normal vector to a point on the doughnut (you may assume the doughnut
-				is laying on a table and $\hat z$ is the unit vector perpendicular to the
-				table).  Does this situation make any physical sense?  Set up an integral to
-				find the total amount of icing on the doughnut.  You may use a computer
-				to evaluate this integral.
-		\end{enumerate}
+		\item For every set in problem 1 that is a vector space, find a basis.
+		\item For every set in problem 1 that is a vector space, find its dimension.
 
-		\item Surface area is subtle.  So subtle that for a long, long time the prevailing
-			mathematical definition of surface area was wrong!  Here's what is was:
-			\begin{quote}
-				A \emph{triangulation} of a surface $\mathcal S$ is a polyhedron
-				$P$ whose faces are all triangles such that the vertices of $P$ lie on
-				$\mathcal S$.
-
-				Given a triangle in $\R^3$, its \emph{diameter} is the smallest
-				diameter of a disk that contains the triangle.  Given a triangulation
-				$P$, the diameter of $P$ is the maximum diameter of every triangular face in $P$.
-
-				The \emph{bogus surface area} of $\mathcal S$ can then be defined
-				as follows:  Let $P_n$ be a sequence of triangulations of $\mathcal S$
-				whose diameter tends to zero.  The surface area of $\mathcal S$
-				is the limit of the surface area of $P_n$ as $n\to\infty$ (if the limit
-				exists).
-			\end{quote}
-
-			In 1890, H. A. Schwartz showed this definition didn't even work for something as
-			simple as a cylinder!
-
-			Let $\mathcal C$ be the cylinder of radius 1 and height 1 and no top and no bottom 
-			(i.e., $\mathcal C$ is just the curvy part).
-
+		\item Let $\mathcal P$ be the plane in $\R^3$ given in vector form by
+			$\vec x=t\vec d_1+s\vec d_2+\vec p$ for unknown vectors $\vec d_1,\vec d_2,\vec p$.
 			\begin{enumerate}
-				\item Let $A_{m,n}$ be a triangulation of $\mathcal C$ defined as follows:
-					Cut $\mathcal C$ into $m$ cylinders of height $1/m$.  Place
-					$n$ points $\{p_i\}$ around the top of each cylinder slice
-					and $n$ points $\{p_i'\}$ around the bottom each cylinder slice
-					where the $i$th point is at the angle $\frac{2\pi i}{n}$.
-					Form triangles by connecting the points $p_i, p_i', p_{i+1}$ and
-					by connecting the points $p_i',p_{i+1},p_{i+1}'$.
-
-					Convince yourself that every triangle in $A_{m,n}$
-					has the same area.
-					Find the surface area of the triangulation $A_{m,n}$ as a function
-					of $m$ and $n$.  What happens as $m,n\to\infty$?  Does this agree with
-					what you know the surface area of a cylinder should be?
-
-				\item  Let $B_{m,n}$ be a triangulation of $\mathcal C$ defined as follows:
-					Cut $\mathcal C$ into $m$ cylinders of height $1/m$.  For the $j$th slice,
-					place
-					$n$ points $\{p_i\}$ around the top of the cylinder 
-					and $n$ points $\{p_i'\}$ around the bottom of the cylinder where
-					the point $p_i$ is placed at an angle $\frac{2\pi i}{n} + \frac{j\pi}{n}$ and the
-					point $p_i'$ is placed at an angle $\frac{2\pi i}{n}+ \frac{(j+1)\pi}{n}$.
-					Form triangles by connecting the points $p_i, p_i', p_{i+1}$ and
-					by connecting the points $p_i',p_{i+1},p_{i+1}'$.
-
-					Notice that $B_{m,n}$ is like $A_{m,n}$ but twisted a bit.
-
-					Convince yourself that every triangle in $B_{m,n}$ has the same area.
-					Find the surface area of the triangulation $B_{m,n}$ as a function
-					of $m$ and $n$ (I don't want any approximations here, I want the \emph{exact}
-					surface area).  What happens as $m,n\to\infty$?  Remember, this is a 2d limit!
-					You may use the approximations
-					\[
-						\sin \tfrac{1}{k}\approx \tfrac{1}{k}\qquad
-						\cos\tfrac{1}{k}\approx 1-\tfrac{1}{2k^2}
-					\]
-					when $k$ is large.
-
-				\item Is all hope lost?  Can you think of a modification to bogus surface area that
-					would make it work?  Propose your own definition
-					of surface area.
-
-
-
+				\item Show that $\mathcal P$ is a subspace if and only if $\vec p=\vec 0$.  That is, show
+				that if $\vec p=\vec 0$, then $\mathcal P$ is a subspace, and if $\vec p\neq \vec 0$,
+				then $\mathcal P$ is not a subspace.
+				\item Suppose that $\vec d_1$ and $\vec d_2$ were accidentally chosen
+					to be linearly dependent.  Is it still the case that $\mathcal P$ is
+					a subspace exactly when $\vec p=\vec 0$, or is the outcome different now?
 			\end{enumerate}
-		
+		\item Let $\mathcal V$ be the subspace spanned by $\vec v_1=\mat{1\\2\\1},\vec v_2=\mat{1\\1\\0},\vec v_3=\mat{4\\0\\-4},
+			\vec v_4=\mat{2\\3\\1},\vec v_5=\mat{-5\\4\\9}$.
+			\begin{enumerate}
+				\item Find a basis for $\mathcal V$ and call your basis vectors $\vec b_1$, $\vec b_2$, etc.
+				\item Describe $\mathcal V$ geometrically.
+				\item Let $V=[\vec v_1|\vec v_2|\vec v_3|\vec v_4|\vec v_5]$ be the matrix whose columns are the vectors
+					$\vec v_1,\vec v_2,\vec v_3,\vec v_4,\vec v_5$, let $B=[\vec b_1|\vec b_2|\cdots]$ be the matrix
+					whose columns are your basis vectors from part (a), and let $\vec v\in \mathcal V$.
+
+					Without computing, how many solutions does the equation $V\vec x=\vec v$ have?  How
+					about $B\vec x=\vec v$?
+			\end{enumerate}
+		\item Suppose $A$ is an invertible matrix and $\vec c_1,\vec c_2,\ldots,\vec c_n$ are its columns.  Is
+			$\{\vec c_1,\vec c_2,\ldots, \vec c_n\}$ a basis?  If so, what is it a basis of?  Explain.
 
 	\end{enumerate}
 
