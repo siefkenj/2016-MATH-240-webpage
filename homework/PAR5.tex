@@ -289,22 +289,30 @@
 	With the framework of linear transformations and bases, we have a more powerful framework to analyze this
 	problem.
 	\begin{enumerate}
-		\item Find linear transformations $\mathcal{S}_J$, $\mathcal{S}_E$ and $\mathcal{S}_L$ that convert
-			Jack, Emily, and Lila's coordinates into true coordinates.  (Remember, a linear transformation
-			is a function from vectors to vectors.  It is closely related to a matrix, but it is not the same
-			thing as a matrix.  Make sure you explain what your \emph{linear transformation} is in each case.)
-		\item Define the distance function $d:\R^2\to\R$ by $d(x,y)=\sqrt{x^2+y^2}$ to be the usual Euclidean distance.
-			Is $d$ a linear transformation?  Why or why not?
-		\item Using the language/notation of function composition, explain how to create distance functions $d_J$, $d_E$,
-			and $d_L$ which take each explorer's measured coordinates and returns the \emph{true} distance that
-			they traveled.
+		\item Find transformations $\mathcal{S}_J$, $\mathcal{S}_E$ and $\mathcal{S}_L$ that convert
+			Jack, Emily, and Lila's coordinates into true coordinates.  Are these transformations
+			linear transformations? 
+			
+			\emph{Hint 1: remember, a transformation
+			is a function from vectors to vectors.  A matrix can give a transformation, but a 
+			matrix by itself is not the same
+			thing as a transformation.  Make sure you explain what your \emph{transformation} is in each case.}
+			
+			\emph{Hint 2: you cannot use a matrix to represent a transformation until \textbf{after} you either 
+			show the transformation is linear, or find an explicit formula for it that coincides with matrix multiplication.}
+%		\item Define the distance function $d:\R^2\to\R$ by $d(x,y)=\sqrt{x^2+y^2}$ to be the usual Euclidean distance.
+%			Is $d$ a linear transformation?  Why or why not?
+%		\item Using the language/notation of function composition, explain how to create distance functions $d_J$, $d_E$,
+%			and $d_L$ which take each explorer's measured coordinates and returns the \emph{true} distance that
+%			they traveled.
 		\item Jack and Lila are best friends and love to trade coordinates with each other.  However, they
 			both know they need to tweak their coordinates to suit the other.  Jack invents a function
 			$T_J:\R^2\to\R^2$ which takes Jack's coordinates as input and outputs the same position
 			in Lila's coordinates.  Lila has a similar transformation $T_L:\R^2\to\R^2$.  Are $T_J$ and
 			$T_L$ linear transformations?  How do they relate to each other?
 		\item Jack, Lila, and Emily got into a fight over whose coordinates are \emph{right}.  Each of them
-			claims since they can compute distances accurately and can convert their coordinates to
+			claims since they can compute distances accurately (based on formulas from PAR 1)
+			and can convert their coordinates to
 			each other's, that their coordinates should be the \emph{Official Royal Coordinates}.
 			Using the language of linear algebra, and in particular the idea of basis, explain what's
 			going on to Jack, Lila, and Emily.
