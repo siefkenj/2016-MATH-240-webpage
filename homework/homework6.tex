@@ -50,129 +50,68 @@
 % This is where the body of the document goes
 %%%
 \begin{document}
-	\setheader{Math 281-1}{Homework 6}{Not for turning in}{}{}{}
+	\setheader{Math 240}{Homework 6}{Due: Thursday, November 17}{}{}{}
+	\emph{We are nearly experts at typing by now.  Though you are not required
+	to type your homework, it's strongly encouraged.  You can even download
+	the \texttt{tex} file for this homework and type your answers below
+	each problem.  Using the} \verb!\begin{quote}! \emph{and} \verb!\end{quote}! \emph{environment
+		will indent anything you type inbetween.  Perfect for typing answers!}
+	
 	\begin{enumerate}
-		\item
+		
+		%\item Let $\vec{u} = \mat{1\\1\\1}$, $\vec{v} = \mat{1\\-1\\-1}$, $\vec{w} = \mat{-1\\1\\-1}$, and $\vec{x} = \mat{2\\0\\0}$.
+		%\begin{enumerate}
+		%	\item Find a linear transformation $T_1$ such that $T_1(\vec{e_1}) = \mat{1\\2\\3}$, $T_1(\vec{e_2}) = \mat{4\\5\\6}$, and $T_1(\vec{e_3}) = \mat{7\\8\\9}$.
+		%	\item Find a linear transformation $T_2$ such that $T_2(\vec{u}) = \mat{1\\2\\3}$, $T_2(\vec{v}) = \mat{4\\5\\6}$, and $T_2(\vec{w}) = \mat{7\\8\\9}$.
+		%	\item Is there a linear transformation $T_3$ such that $T_3(\vec{u}) = \mat{1\\2\\3}$, $T_3(\vec{v}) = \mat{4\\5\\6}$, and $T_3(\vec{x}) = \mat{7\\8\\9}$?  Explain why or why not.
+		%\end{enumerate}
+		%You may give your answers in the form of a matrix.
+		
+		\item Let $A = \mat{1 & 0 & 1 & 1 & 3 \\ 1 & 2 & 3 & -1 & -1 \\ 3 & 1 & 4 & 2 & 7}$.  Let $\mathcal{C}$, $\mathcal{R}$, and $\mathcal{N}$ be the column, row, and null spaces of $A$, respectively.
 		\begin{enumerate}
-			\item Find $f$ so that $\vec F(x,y)=\nabla f(x,y)=(x^2,y^2)$ and use this knowledge
-				to compute the amount of work done moving along the parabola $y=2x^2$ from $(-1,2)$ 
-				to $(2,8)$.
-			\item Find $g$ so that $\vec G(x,y)=\nabla g(x,y)=(\frac{y^2}{1+x^2}, 2y\arctan x)$ and use this knowledge
-				to compute the amount of work done moving along the parabola $y=2x^2$ from $(-1,2)$ 
-				to $(2,8)$.
+			\item Find a basis for $\mathcal{C}$
+			\item Find a basis for $\mathcal{R}$.
+			\item Find a basis for $\mathcal{N}$.
+			\item Find the dot product of each of your basis vectors for $\mathcal{R}$ with each of your basis vectors for $\mathcal{N}$.
+			What can you say geometrically about $\mathcal{R}$ and $\mathcal{N}$?
+		\end{enumerate}
+		
+		\item Let $L$ be the line $x=y=z$ in $\R^3$.
+		\begin{enumerate}
+			\item Find a $3\times 3$ matrix $B_1$ whose column space is the $xy$-plane and whose null space is $L$.
+			\item Find a $3\times 3$ matrix $B_2$ whose column space is the $xz$-plane and whose null space is $L$.
+			\item Find the row space of $B_1$ and the row space of $B_2$.  How do they compare?  Explain.
+		\end{enumerate}
+		
+		\item A linear transformation $T$ has the following effects:
+		\begin{itemize}
+			\item Along the line $y = x$, it ``shrinks'' everything by a factor of 2---points along this line move halfway to the origin.
+			\item Along the line $y=-3x$, it reflects everything over the origin---if $\vec{v}$ is the position vector of a point on this line, then it moves to $-\vec{v}$.
+		\end{itemize}
+		\begin{enumerate}
+			\item Find a matrix $A$ such that $T(\vec{v}) = A\vec{v}$ for all $\vec{v} \in \R^2$.
+			\item Find $A^{-1}$.
+			\item What are the ``stretch factors'' and ``stretch directions'' of the transformation given by $A^{-1}$?
 		\end{enumerate}
 
-		\item Let $\mathcal S$ be the surface of the unit sphere in $\R^3$.  $\mathcal S$ is parameterized
-			by
-			\[
-				\vec p(\theta,\phi) = \Big(f(\theta, \phi), g(\theta, \phi), h(\theta, \phi)\Big)
-			\]
-			and is oriented outwards.  Additionally you are told that for a vector field $\vec F:\R^3\to\R^3$,
-			the flux of $\vec F$ through $\mathcal S$ is given by 
-			\[
-				\iint \vec F\circ \vec p(\theta,\phi)
-				\cdot
-				\left(
-					\frac{\partial \vec p}{\partial \theta}(\theta,\phi)
-					\times
-					\frac{\partial \vec p}{\partial \phi}(\theta,\phi)
-				\right)
-				\,\d\theta \d\phi.
-			\]
-			\begin{enumerate}
-				\item For a fixed $(\theta_0,\phi_0)$, does 
-					$\frac{\partial \vec p}{\partial \theta}(\theta_0,\phi_0)
-					\times
-					\frac{\partial \vec p}{\partial \phi}(\theta_0,\phi_0)$
-					point inwards or outwards?  How about 
-					$
-					\frac{\partial \vec p}{\partial \phi}(\theta_0,\phi_0)
-					\times
-					\frac{\partial \vec p}{\partial \theta}(\theta_0,\phi_0)
-					$?
-
-				\item Using the component functions $f,g$, and $h$, come up with a new
-					parameterization of $\mathcal S$ called $\vec q(\theta, \phi)$
-					such that
-					\[
-					\frac{\partial \vec q}{\partial \phi}(\theta_0,\phi_0)
-					\times
-					\frac{\partial \vec q}{\partial \theta}(\theta_0,\phi_0)
-					\]
-					points outwards.  (Be creative; draw pictures; think about the
-					orientation of tangent vectors).
-			\end{enumerate}
-
-		\item \emph{A new way to do volume forms}.  Let's consider polar coordinates
-			again.  We know the volume form for polar coordinates is $r\d r\d \theta$,
-			which we computed using the geometry of circles.  However, the
-			parameterization
-			\[
-				\vec p(r,\theta)=(r\cos\theta, r\sin\theta,0),
-			\]
-			parameterizes a surface (the $xy$-plane) in three dimensions in a very similar
-			way to polar coordinates.
-
-			Let $R=\{(x,y,z):x^2+y^2\leq 1\text{ and }z=0\}$.
-			\begin{enumerate}
-				\item Use the parameterization $\vec p$ to set up an integral to find
-					the surface area of $R$.  (I know there are easier ways in
-					this case, but set up the integral like a surface integral).
-				\item Do you see volume form from polar coordinates in your answer
-					to part (a)?
-				\item Consider the skewed coordinate system from homework 5 given by 
-					\[
-						x=a-b\qquad\text{and}\qquad y=2a+b.
-					\]
-					Imagine the $xy$-plane parameterized by $\vec s(a,b)=(a-b,2a+b,0)$.
-					What would it look like if you set up a surface integral to compute
-					the area of regions of the $xy$-plane?  How does $\left\| \frac{\partial \vec s}{\partial a}
-					\times \frac{\partial \vec s}{\partial b}\right\|$ relate to the volume form
-					for skewed coordinates?
-				\item Consider the stretched polar coordinates from a million assignments ago given
-					by
-					\[
-						x=\rho\cos \theta\qquad\text{and}\qquad y=2\rho\sin\theta.
-					\]
-					Imagine again that you parameterize the $xy$-plane with stretched
-					polar coordinates and decided to do surface integrals.  Where
-					and how does the volume form for stretched polar coordinates appear
-					in your answer?
-				\item Consider weirdo polar coordinates $\mathcal WP$ give by 
-					by
-					\[
-						x=\rho^2\cos \theta^2\qquad\text{and}\qquad y=\rho^2\sin\theta^2.
-					\]
-					Compute the volume form for weirdo polar coordinates both from the definition
-					of the volume form and by pretending its a surface integral.  Which way
-					is easier to compute?  Which way makes the most sense in your head?
-			\end{enumerate}
-
-		\item \emph{Conservative can be complicated\ldots}Let $\vec f(x,y) = (\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2})$.
-			\begin{enumerate}
-				\item Plot the vector field $\vec f$.  Is it conservative?  Why or why not?
-				\item Let $F(x,y)=\arctan(y/x)$.  Compute $\nabla F$.  What's going on here?
-				\item Let $R_{(x,y)}$ be the square oriented counter clockwise
-					with side lengths 1 and lower-left corner
-					at the point $(x,y)$.  Find the work done by $\vec f$ on a particle 
-					traversing the paths $R_{(1,1)}$, $R_{(-1,1)}$, and $R_{(-4,-3)}$.  
-					Will your answer always be the same?  (Doing these integrals by hand
-					isn't important.  After breaking them up into appropriate pieces, you may
-					use a compute to evaluate, if you like).
-
-				\item Graph the function \[
-						Q(x,y) = \text{work done by $\vec f$ traversing }R_{(x,y)}.
-					\]
-					How many values does this function take?  Is it defined everywhere?
-				\item A subset $X\subset \R^2$ is called \emph{simply connected} if any two circles
-					in $X$
-					can be deformed into each other without having to leave $X$.  If
-					$\vec g= \nabla G$ for some $G:\R^2\to\R$ and the domain of $\vec g$ is
-					simply connected, then the work done by $\vec g$ traversing
-					any closed loop is zero.  Explain how this property relates 
-					to the current situation with $\vec f$.
-			\end{enumerate}
-
+		%\item Let $T:\R^n\to\R^n$. A subspace $X\subseteq \R^n$ is called \emph{invariant with respect to $T$} if $TX=X$.  That is,
+			%$\{\vec v:\vec v=T\vec x\text{ for some }\vec x\in X\}=X$.  Note, this is \emph{different} than saying $T\vec x=\vec x$ for all $\vec x\in X$.
+		%\begin{enumerate}
+			%\item Describe all invariant subspaces of the linear transformation given by the matrix $\mat{1&0\\0&2}$.
+			%\item Describe all invariant subspaces of the linear transformation given by the matrix $\mat{2&0\\0&2}$.
+			%\item Describe all invariant subspaces of the sheer given by the matrix $\mat{1&a\\0&1}$ where $a\neq 0$.
+			%\item Explain how invariant subspaces relate to eigenvectors.
+		%\end{enumerate}
+		
+		\item Recall the ``italicizing $N$'' matrix that you found in class: $A = \mat{1 & \frac{1}{3} \\ 0 & \frac{4}{3}}$.
+		Find all eigenvalues (``stretch factors'') and eigenvectors (``stretch directions'') of $A$.
+		
+		%\item Give an example of a 2-by-2 matrix with fewer than two ``stretch directions''.  (That is, find a matrix with fewer than two linearly indepedent eigenvectors.)
+			
+		
+		
+			
+		
 	\end{enumerate}
 
 \end{document}
