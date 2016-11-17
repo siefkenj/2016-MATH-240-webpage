@@ -1,0 +1,131 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\textheight=9.0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+\expandafter\def\expandafter\quote\expandafter{\quote\sf\color{DarkGreen}}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[6]{
+	\lhead{{\sc #1}\\{\sc #2} ({\small \it \today})}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{}{(#6)}%
+	}
+}
+
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\proj}{\mathrm{proj}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\Det}{\mathrm{det}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\renewcommand{\d}{\mathrm{d}}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{PAR 7}{Due: Wednesday, November 23}{}{}{}
+	Though this is called a ``PAR,'' we will not be doing the peer-assisted reflection
+	portion of this assignment.
+
+	We've come a long way in this course---we've gone from row-reduction to matrix equations, from
+	spans and linear independence to eigenvectors and diagonalization.  It's now time to reflect
+	on the term and see how we've changed.
+
+	This homework involves writing two short essays.  Essay 1 should be at most one page and 
+	essay 2 should be 1--2 pages.  Please label your essays appropriately.
+	
+	\begin{enumerate}
+		\item Before the course started, you wrote a homework 0.  Please re-read what
+			you wrote for homework 0 and explain whether or not your thoughts on
+			any of the questions have been reinfoced or changed.  Please provide at least
+			one example of why your opinions now are the same or different.  The example
+			can come from this class, but it doesn't have to.
+		
+		
+		\item 
+			Imagine you are writing a letter to a parent/aunt/uncle who has 
+			taken technical math/science courses in
+			the past, but has forgotten most of the terminology.  Write to this audience explaining 
+			what Math 240 is about, and highlight the main ideas in the class (when writing to 
+			non-technical audience, examples are key).  In your essay, please do the following:
+			\begin{enumerate}
+				\item[(i)] address at least one
+					of the three over-arching {\sc Learning Outcomes} listed on the course syllabus and 
+					whether you feel you've achieved that learning outcome;
+				\item[(ii)] include one technical math definition written in both math language and
+					explained with plain English
+				\item[(iii)] explain, for at least one linear algebra concept, how it can be viewed
+					geometrically \emph{and} algebraically.
+			\end{enumerate}
+
+			Your essay should start on a new page (i.e.,
+			essay 1 gets its own page(s) and this essay gets its own pages).  To help you set the mood, 
+			start your letter with,
+			\begin{quote}
+				Dear Mom, 
+
+				This term at Northwestern I've been taking Math 240, which is a course about$\ldots$
+			\end{quote}
+
+			Of course, if you're inspired to start your essay a different way, feel free to!
+			You should have fun with this essay.  After all, how often do you get a chance to explain 
+			to others and yourself what a university course really taught you?
+
+			Some guidelines on how your essay will be evaluated:
+			\begin{enumerate}
+				\item[Acceptable:]
+					Correctly identified a learning outcome from the syllabus 
+					and conveyed to the reader whether or not you have achieved it; gave a definition in mathematical
+					and plain language; gave an example of a concept that we view geometrically and algebraically.
+				\item[Good:]
+					Correctly identified a learning outcome from the syllabus
+					and explained clearly \emph{why} you have or have not achieved it; gave a definition in mathematical
+					and plain language and explained \emph{how}
+					this definition relates to solving linear algebra problems; 
+					gave an example of a concept that we view geometrically and algebraically.
+				\item[Excellent:]
+					Correctly identified a learning outcome from the syllabus, 
+					discussed \emph{how} this learning outcome connects to specific material or themes from the course, 
+					and explained clearly \emph{why} you have or have not achieved it;  gave a definition in mathematical
+					and plain language and explained \emph{how}
+					this definition relates to solving linear algebra problems and \emph{how} definitions play an
+					important role in linear algebra; gave an example of a concept that we view geometrically and algebraically
+					and explained \emph{how} having a geometric and algebraic viewpoint of the same concept
+					is useful.
+			\end{enumerate}
+
+		
+	\end{enumerate}
+
+\end{document}
