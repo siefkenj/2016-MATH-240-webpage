@@ -1,0 +1,646 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{changepage}
+\graphicspath{{images/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathrsfs}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+\expandafter\def\expandafter\quote\expandafter{\quote\sf\color{DarkGreen}}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[7]{
+	\lhead{{\sc #1}\\{\sc #2} %({\small \it \today})
+	}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{#7}{(#6)}%
+	}
+}
+
+%%%
+% Set up closure command
+%%%
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\Range}{\mathrm{range}}
+\newcommand{\Det}{\mathrm{det}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\Rref}{\mathrm{rref}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\RI}{\mathscr{R}}
+\newcommand{\RSI}[1]{\mathscr{R}(#1)}
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\diam}{diam}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\newenvironment{answer}{
+	\begin{adjustwidth}{8mm}{} \vspace{2mm}}{\end{adjustwidth} \vspace{2mm}
+}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{prop}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 3 Solutions}{Due: Thursday, October 20}{}{}{}{}
+	\begin{enumerate}
+		\item Let $\vec a=\mat{1\\2\\3}$, $\vec b=\mat{4\\5\\6}$, $\vec c=\mat{d\\1\\1}$, and $\vec w=\mat{w_1\\w_2\\w_3}$
+			be vectors where $d,w_1,w_2,w_3\in\R$ are unknown constants.
+			\begin{enumerate}
+			\item For what values of $d$ is $\{\vec a,\vec b,\vec c\}$ linearly
+			independent?  For which values of $d$ is $\{\vec a,\vec b,\vec c\}$ linearly dependent?
+			\begin{answer}
+				We begin with row reduction. 
+				\[
+				\left[\begin{array}{ccc|c}
+				\vec{a} & \vec{b} & \vec{c} & \vec{w}
+				\end{array}\right] = 
+				\left[\begin{array}{ccc|c}
+				1 & 4 & d & w_1 \\
+				2 & 5 & 1 & w_2 \\
+				3 & 6 & 1 & w_3
+				\end{array}\right] \sim
+				\left[\begin{array}{ccc|c}
+				1 & 4 & d & w_1 \\
+				0 & -3 & 1-2d & w_2 - 2w_1 \\
+				0 & -6 & 1-3d & w_3 - 3w_1
+				\end{array}\right].
+				\]
+				Continuing gives
+				\[
+				\sim \left[\begin{array}{ccc|c}
+				1 & 4 & d & w_1 \\
+				0 & -3 & 1-2d & w_2 - 2w_1 \\
+				0 & 0 & (1-3d)-2(1-2d) & w_3 - 3w_1 - 2(w_2 - 2w_1)
+				\end{array}\right].
+				\]
+				This is thus equal to
+				\[
+				\left[\begin{array}{ccc|c}
+				1 & 4 & d & w_1 \\
+				0 & -3 & 1-2d & w_2-2w_1 \\
+				0 & 0 & d-1 & w_1-2w_2+w_3
+				\end{array}\right].
+				\]
+				Therefore, based on the above row-equivalent matrix to the augmented matrix, we have that $\vec{a}, \vec{b}, \vec{c}$ are independent if and only if the first three columns are all pivot columns. That means $d-1 \neq 0$ or $d \neq 1$. Vice versa, $\vec{a}, \vec{b}, \vec{c}$ are dependent if and only if $d = 1$. 
+			\end{answer}			
+			\item Write down the system of equations coming from the rows of the vector equation
+				\[
+					x\vec a+y\vec b+z\vec c=\vec w.
+				\]
+			\begin{answer}
+				\[
+				\begin{cases}
+				x + 4y + d_z &= w_1 \\
+				2x + 5y + z &= w_2 \\
+				3x + 6y + z &= w_3.
+				\end{cases}
+				\]
+			\end{answer}
+			\item Give three numeric examples of different vectors $\vec w$ such that the above system is consistent
+				no matter what $d$ is. Explain.
+			\begin{answer}
+				For the system to be consistent no matter what $d$ is, $w_1-2w_2+w_3 = 0$. Therefore, pick 
+				\[
+				\vec{w} = \mat{0\\0\\0} \text{ or } \mat{1\\1\\1} \text{ or } \mat{1\\2\\3}.
+				\]
+			\end{answer}
+			\item Give a numeric example of a vector $\vec w$ such that the above system is only 
+				consistent for some $d$. Explain.
+			\begin{answer}
+				When $d = 1$, the system is consistent only if $w_1 - 2w_2 + w_3 = 0$. Hence if $w_1 - 2w_2 + w_3 \neq 0$, then the system is consistent only when $d \neq 1$. We can pick
+				\[
+				\vec{w} = \mat{1\\1\\0}
+				\]
+				for this situation to happen. 
+			\end{answer}
+			\end{enumerate}
+		\item \begin{enumerate}
+				\item Use an augmented matrix to solve
+					\begin{align*}
+						x+y&=7\\
+						2x-3y&=13.
+					\end{align*}
+					Are there any values you could replace the right hand side of the equations with
+					such that there would be no solution?  Explain both \emph{geometrically}
+					(using vectors, span, etc.) and \emph{algebraically} (using systems, consistency,
+					etc.) using technical linear algebra terms.
+				\begin{answer}
+					We begin with row reduction. 
+					\[
+					\left[\begin{array}{cc|c}
+					1 & 1 & 7 \\
+					2 & -3 & -13
+					\end{array}\right] \sim
+					\left[\begin{array}{cc|c}
+					1 & 1 & 7 \\
+					0 & -5 & -1
+					\end{array}\right] \sim
+					\left[\begin{array}{cc|c}
+					1 & 0 & 34/5 \\
+					0 & 1 & 1/5
+					\end{array}\right].
+					\]
+					Thus, the solution is 
+					\[
+					\mat{x\\y} = \mat{34/5 \\ 1/5}.
+					\]
+					
+					There are no values we could replace the right hand side of the equations with such that there would be no solution because:
+					\begin{enumerate}
+						\item[(a)] Geometrically, the column vectors of the coefficient matrix
+						\[
+						\left[\begin{array}{cc}
+						1 & 1 \\
+						2 & -3
+						\end{array}\right]
+						\]
+						are linearly independent. Hence any vector in $\R^2$ can be written as their linear combination. 
+						\item[(b)] Algebraically,
+						\[
+						\Rref\left[\begin{array}{cc}
+						1 & 1 \\
+						2 & -3
+						\end{array}\right] = \begin{array}{cc}
+						1&0\\
+						0&1
+						\end{array}
+						\]
+						has all non-zero rows. Hence the system 
+						\[
+						\left[\begin{array}{cc}
+						1 & 1 \\
+						2 & -3
+						\end{array}\right]
+						\mat{x\\y} = \mat{a\\b}
+						\]
+						is consistent for all $a,b \in \R$. 
+					\end{enumerate}
+				\end{answer}
+				\item 
+				Consider the system given by the augmented matrix
+				\[
+					C=\left[\begin{array}{ccccc|c}
+						1&0&1&2&0&-1\\
+						0&1&1&0&0&3\\
+						0&0&0&0&1&4
+					\end{array}\right].
+				\]
+				and call the variables in this system $x_1,x_2,
+				x_3,x_4,x_5$.  Write all solutions to this system in vector form.
+				How many free variables are there?
+				\begin{answer}
+					Observe that this matrix corresponds to the following systems of equations
+					\[
+					\begin{cases}
+					x_1 + x_3 + 2x_4 &= -1\\
+					x_2 + x_3 &= 3 \\
+					x_5 &= 4
+					\end{cases} \iff 
+					\begin{cases}
+					x_1 &= -x_3 -2x_4 -1 \\
+					x_2 &= -x_3 + 3 \\
+					x_5 &= 4
+					\end{cases}.
+					\]
+					Therefore, the solutions given in vector form are
+					\[
+					\mat{x_1\\x_2\\x_3\\x_4\\x_5} = x_3\mat{-1\\-1\\1\\0\\0} + x_4\mat{-2\\0\\0\\1\\0} + \mat{-1\\3\\0\\0\\4}
+					\]
+					with $x_3, x_4 \in \R$. Thus, there are two free variables in this system of equations. 
+				\end{answer}
+				\item There are 10 ways to pick two things from the set $\{x_1,x_2,x_3,x_4,x_5\}$.
+					For each of the ten ways, determine whether that pair is a valid choice
+					of free variables for $C$.
+				\begin{answer}
+					Valid choices are: $(x_1, x_2), (x_1, x_3), (x_1, x_4), (x_2, x_4), \text{ and } (x_3, x_4)$.
+				\end{answer}
+				\item Write down all solutions to the homogeneous system corresponding to $C$ 
+					(i.e., when the right-hand side is replaced with all zeros).  How does this
+					set of solutions compare to the set of solutions of $C$?
+				\begin{answer}
+					Solutions to the homogeneous system corresponding to $C$ satisfy
+					\[
+					\begin{cases}
+					x_1 + x_3 + 2x_4 &= 0\\
+					x_2 + x_3 &= 0\\
+					x_5 = 0
+					\end{cases} \iff
+					\begin{cases}
+					x_1 &= -x_3-2x_4\\
+					x_2 &= -x_3\\
+					x_5 &= 0
+					\end{cases}.
+					\]
+					Therefore, we have that the set of solutions to the homogeneous system given in vector form is
+					\[
+					\mat{x_1\\x_2\\x_3\\x_4\\x_5} = x_3\mat{-1\\-1\\1\\0\\0} + x_4\mat{-2\\0\\0\\1\\0}.
+					\]
+					The solution set of the homogeneous system is the solution set of the original system translated by the vector
+					\[
+					\mat{-1\\3\\0\\0\\4}.
+					\]
+				\end{answer}
+			\end{enumerate}
+		\item Let $M=\mat{3&2&3\\0&0&1\\2&1&0}$ and $\vec w=\mat{1\\2\\-1}$.
+			\begin{enumerate}
+				\item Find solutions $\vec v_1$, $\vec v_2$, and $\vec v_3$ to the three matrix
+					equations
+					\[
+						M\vec v_1=\vec e_1\qquad M\vec v_2=\vec e_2\qquad M\vec v_3=\vec e_3.
+					\]
+				\begin{answer}
+					We begin with row reduction, first with $M\vec{v}_1 = \vec{e}_1$.
+					\[
+					\left[\begin{array}{ccc|c}
+					3 & 2 & 3 & 1 \\
+					0 & 0 & 1 & 0 \\
+					2 & 1 & 0 & 0
+					\end{array}\right] \sim
+					\left[\begin{array}{ccc|c}
+					3 & 2 & 3 & 1 \\
+					0 & 0 & 1 & 0 \\
+					0 & -1 & -6 & -2
+					\end{array}\right] \sim
+					\left[\begin{array}{ccc|c}
+					3 & 0 & -9 & -3 \\
+					0 & 1 & 6 & 2 \\
+					0 & 0 & 1 & 0
+					\end{array}\right] \sim
+					\left[\begin{array}{ccc|c}
+					1 & 0 & 0 & -1 \\
+					0 & 1 & 1 & 2 \\
+					0 & 0 & 1 & 0
+					\end{array}\right].
+					\]
+					Thus, we find that 
+					\[
+					\vec{v}_1 = \mat{-1\\2\\0}.
+					\]
+					We compute $v_2$ and $v_3$ similarly, and find that
+					\[
+					\vec{v}_2 = \mat{3\\-6\\1} \text{ and } \vec{v}_3 = \mat{2\\-3\\0}.
+					\]
+				\end{answer}
+				\item Compute $M(a\vec v_1)$ and $M(a\vec v_1+b\vec v_2)$ (where $\vec v_i$ are from above)
+					where $a,b\in\R$ are unknown scalars.
+					Was what happened a surprise?
+				\begin{answer}
+					We compute. 
+					\[
+					M(a\vec{v}_1) = 
+					\left[\begin{array}{ccc}
+					3 & 2 & 3\\
+					0 & 0 & 1\\
+					2 & 1 & 0
+					\end{array}\right]
+					\mat{-a\\2a\\0} = \mat{a\\0\\0} = a\mat{1\\0\\0} = a\vec{e}_1.
+					\]
+					Further,
+					\[
+					M(a\vec{v}_1 + b\vec{v}_2) = 
+					\left[\begin{array}{ccc}
+					3 & 2 & 3\\
+					0 & 0 & 1\\
+					2 & 1 & 0
+					\end{array}\right]
+					\mat{-a+3b\\2a-6b\\b} = \mat{a\\b\\0} = a\vec{e}_1 + b\vec{v}_2.
+					\]
+				\end{answer}
+				\item Express the solution to the matrix equation $M\vec x=\vec w$ as a linear combination
+					of $\vec v_1$, $\vec v_2$, and $\vec v_3$.  (Recall, $\vec w$ is defined at the beginning
+					of the problem.)
+				\begin{answer}
+					We row reduce
+					\[
+					\left[\begin{array}{ccc|c}
+					3 & 2 & 3 & 1 \\
+					0 & 0 & 1 & 2 \\
+					2 & 1 & 0 & -1
+					\end{array}\right] \sim
+					\left[\begin{array}{ccc|c}
+					1 & 0 & 0 & 3 \\
+					0 & 1 & 1 & -7 \\
+					0 & 0 & 1 & 2
+					\end{array}\right].
+					\]
+					Therefore, we find that a solution is
+					\[
+					\vec{x} = \mat{3\\-7\\2} = \mat{-1\\2\\0} + 2\mat{3\\-6\\1} - \mat{2\\-3\\0},
+					\]
+					so then $\vec{x} = \vec{v}_1 + 2\vec{v}_2 - \vec{v}_3$.
+				\end{answer}
+				\item Let $V=[\vec v_1|\vec v_2|\vec v_3]$ be the matrix whose columns are $\vec v_1$, $\vec v_2$,
+					and $\vec v_3$.  Compute the matrix product $MV$.  Explain why you got the
+					result you did.
+				\begin{answer}
+					We compute $MV$. 
+					\[
+					MV = \left[\begin{array}{ccc}
+					3 & 2 & 3\\
+					0 & 0 & 1\\
+					2 & 1 & 0
+					\end{array}\right]
+					\left[\begin{array}{ccc}
+					-1 & 3 & 2\\
+					2 & -6 & -3\\
+					0 & 1 & 0
+					\end{array}\right] = \
+					\left[\begin{array}{ccc}
+					1 & 0 & 0\\
+					0 & 1 & 0\\
+					0 & 0 & 1
+					\end{array}\right].
+					\]
+					We get that $MV = I$ because $MV = M\mat{\vec{v}_1 & \vec{v}_2 & \vec{v}_3} = \mat{M\vec{v}_1 & M\vec{v}_2 & M\vec{v}_3} = \mat{\vec{e}_1 & \vec{e}_2 & \vec{e}_3}$. 
+				\end{answer}
+				\item Can you use $V$ to help you solve the system
+					\[
+						M\vec x=\mat{a\\b\\c}?
+					\]
+					If so, explain how and do so.
+				\begin{answer}
+					As we computed, $MV = I = \mat{\vec{e}_1 & \vec{e}_2 & \vec{e}_3}$. Hence, 
+					\[
+					M(V\mat{a\\b\\c}) = (MV)\mat{a\\b\\c} = I\mat{a\\b\\c} = \mat{a\\b\\c}.
+					\]
+					Therefore,
+					\[
+					\vec{x} = V\mat{a\\b\\c}
+					\]
+					is a solution to the equation
+					\[
+					M\vec{x} = \mat{a\\b\\c}.
+					\]
+					This is a unique solution since all columns of $\Rref(M)$ are pivot columns. 
+				\end{answer}
+				\item Compute the matrix product $VM$.  Can you explain why you got what you did?
+					(\emph{Hint: you might have to think about linear transformations for this one.})
+				\begin{answer}
+					\[
+					VM = \left[\begin{array}{ccc}
+					-1 & 3 & 2\\
+					2 & -6 & -3\\
+					0 & 1 & 0
+					\end{array}\right]
+					\left[\begin{array}{ccc}
+					3 & 2 & 3\\
+					0 & 0 & 1\\
+					2 & 1 & 0
+					\end{array}\right] = 
+					\left[\begin{array}{ccc}
+					1 & 0 & 0\\
+					0 & 1 & 0\\
+					0 & 0 & 1
+					\end{array}\right].
+					\]
+					Then, consider the equation from part (e):
+					\[
+					M\vec{x} = \mat{a\\b\\c} \implies VM\vec{x} = V\mat{a\\b\\c}.
+					\]
+					Then, from part (e), we know that
+					\[
+					\vec{x} = V\mat{a\\b\\c}
+					\]
+					is a solution for the above equation. This implies that
+					\[
+					VM\vec{x} = \vec{x} \quad \left( \vec{x} = V\mat{a\\b\\c}\right). 
+					\]
+					Because $V$ is invertible, for any vector $\vec{x} \in \R^3$, $\vec{x}$ can be written as
+					\[
+					\vec{x} = V\mat{a\\b\\c}
+					\]
+					for some $a,b,c \in \R$. Therefore, $VM\vec{x} = \vec{x}$ for all $\vec{x} \in \R^3$, so then $VM$ is the identity transformation on $\R^3$. In other words, $VM = I$. 
+				\end{answer}
+			\end{enumerate}
+
+		\item Consider the transformations $A:\R^2\to \R^2$ and $B:\R^2\to \R^2$ given by
+			the formulas
+			\[
+				A(x,y) = (x-y, x+y)\qquad\text{and}\qquad B(x,y)=(x^2,y^2).
+			\]
+			\begin{enumerate}
+				\item Compute $A(\vec e_1)$, $A(\vec e_2)$, $A(\vec e_1+\vec e_2)$,
+					$B(\vec e_1)$, $B(\vec e_2)$, and $B(\vec e_1+\vec e_2)$.
+				\begin{answer}
+					\begin{align*}
+					A(\vec{e}_1) &= A(1,0) = (1-0, 1+0) = (1,1)\\
+					A(\vec{e}_2) &= A(0,1) = (0-1, 0+1) = (-1,1)\\
+					A(\vec{e}_1 + \vec{e}_2) &= A(1,1) = (1-1, 1+1) = (0,2)\\
+					B(\vec{e}_1) &= B(1,0) = (1^2, 0^2) = (1,0)\\
+					B(\vec{e}_2) &= B(0,1) = (0^2, 1^2) = (0,1)\\
+					B(\vec{e}_1 + \vec{e}_2) &= B(1,1) = (1^2, 1^2) = (1,1).
+					\end{align*}
+				\end{answer}
+				\item Find a matrix $M_A$ so that $A$ is given by matrix
+					multiplication, or explain why it is impossible.
+				\begin{answer}
+					Let
+					\[
+					M_A = \left[\begin{array}{cc}							a & b\\
+					c & d
+					\end{array}\right]. 
+					\]
+					Then
+					\[
+					\left[\begin{array}{cc}									a & b\\
+					c & d
+					\end{array}\right]
+					\mat{x\\y} = \mat{x-y\\x+y}
+					\]
+					for all $x, y \in \R$. Equivalently, for all $x, y \in \R$, we have that
+					\[
+					\begin{cases}
+					ax+by &= x-y\\
+					cx+dy &= x+y
+					\end{cases} \iff
+					\begin{cases}
+					a &= 1\\
+					b &= -1\\
+					c &= 1\\
+					d &= -1
+					\end{cases}\implies
+					M_A = \left[\begin{array}{cc}							1 & -1\\
+					1 & 1
+					\end{array}\right].
+					\]
+				\end{answer}
+				\item Find a matrix $M_B$ so that $B$ is given by matrix
+					multiplication, or explain why it is impossible.
+				\begin{answer}
+					Let
+					\[
+					M_B = \left[\begin{array}{cc}
+					a & b \\
+					c & d
+					\end{array}\right].
+					\]
+					Then for all $x, y \in \R$,
+					\[
+					\left[\begin{array}{cc}
+					a & b \\
+					c & d
+					\end{array}\right]
+					\mat{x\\y} = \mat{x^2\\y^2}. 
+					\]
+					Equivalently
+					\[
+					\begin{cases}
+					ax+by &= x^2\\
+					cx+dy &= y^2
+					\end{cases}.
+					\]
+					However, it is impossible to find $a,b$ so that $ax+by = x^2$ for all $x \in \R$ because the right hand side has the term $x^2$ while the left hand side does not have this term. Similarly, it is impossible to find $c,d$. 
+				\end{answer}
+				\item A function $X:\R^n\to\R^m$ is called \emph{linear} if it satisfies:
+					\begin{enumerate}
+						\item $X(\alpha \vec v) = \alpha X(\vec v)$ for all $\vec v\in \R^n$
+					and all $\alpha\in \R$ {\bf and} 
+						\item $X(\vec v+\vec w) = X(\vec v)
+					+X(\vec w)$ for all $\vec v, \vec w\in \R^n$.
+					\end{enumerate}
+
+					For each of $A$ and $B$, determine whether or not it is a linear function. Prove your answers.
+				\begin{answer}
+					\begin{proof}
+					We will prove that $A$ is a linear function. For all
+					\[
+					\vec{v} = \mat{v_1\\v_2} \in \R^2 \text{ and } \vec{w} = \mat{w_1\\w_2} \in \R^2
+					\]
+					and $\alpha \in \R$, we have that
+					\[
+					A(\alpha\vec{v}) = A\mat{\alpha v_1 \\ \alpha v_2} = \mat{\alpha v_1 - \alpha v_2\\ \alpha v_1 + \alpha v_2} = \alpha\mat{v_1 - v_2 \\ v_1 + v_2} = \alpha(A\vec{v}).
+					\]
+					Further, we have that
+					\[
+					A(\vec{v} + \vec{w}) = A \mat{v_1 + w+1 \\ v_2 + w_2} = \mat{v_1 - v_2 + w_1 - w_2 \\ v_1 + v_2 + w_1 + w_2} = \mat{v_1 - v_2\\v_1 + v_2} + \mat{w_1-w_2\\w_1 + w_2} = A\vec{v} + A\vec{w}. 
+					\]
+					Thus, $A$ is a linear function, since it satisfies both requirements. 
+					\end{proof}
+					\begin{proof}
+					We will prove that $B$ is not a linear function. Consider
+					\[
+					B\mat{1\\1} = \mat{1^2 \\ 1^2} = \mat{1\\1}.
+					\]
+					Further consider
+					\[
+					B\mat{2\\2} = \mat{2^2\\2^2} = \mat{4\\4}. 
+					\]
+					Thus, we have that
+					\[
+					B\mat{2\\2} \neq 2B\mat{1\\1}
+					\]
+					so $B$ fails property i, and cannot be a linear function. 
+					\end{proof}
+				\end{answer}
+			\end{enumerate}
+		\item \begin{enumerate}
+				\item Let $\vec v\in \R^n$ and define the function $d_{\vec v}:\R^n\to\R$ by
+					$d_{\vec v}(\vec w) = \vec v\cdot \vec w$.  Prove that $d_{\vec v}$
+					is linear.  (\emph{Hint: you should be having flashbacks to homework 1}.)
+				\begin{answer}
+					\begin{proof}
+					For any vectors $\vec{u}, \vec{w} \in \R^n$, and scalar $\alpha \in \R$, we have that 
+					\begin{enumerate}
+						\item[(i)] $d_{\vec{v}}(\alpha\vec{u}) = \vec{v} \cdot (\alpha\vec{w}) = \alpha(\vec{v} \cdot \vec{w}) = \alpha d_{\vec{v}}(\vec{u})$
+						\item[(ii)] $d_{\vec{v}}(\vec{u} + \vec{w}) = \vec{v}\cdot(\vec{u} + \vec{w}) = \vec{v}\cdot\vec{u} + \vec{v}\cdot\vec{w} = d_{\vec{v}}(\vec{u}) + d_{\vec{v}}(\vec{w})$. 
+					\end{enumerate}
+					Therefore, $d_{\vec{v}}$ is linear. 
+					\end{proof}
+				\end{answer}
+				\item For a $2\times 2$ matrix $M$, let $f_{M}:\R^2\to\R^2$ be defined by
+					$f_M(\vec v) = M\vec v$, where $\vec v$ is a column vector.  Prove that
+					$f_M$ is a linear transformation.
+				\begin{answer}
+					\begin{proof}
+					Assume that
+					\[
+					M = \left[\begin{array}{cc}								a & b\\
+					c & d
+					\end{array}\right]
+					\]
+					and let
+					\[
+					\vec{v} = \mat{v_1 \\ v_2} \text{ and } \vec{w} = \mat{w_1 \\ w_2}
+					\]
+					be arbitrary vectors in $\R^2$. Further, let $\alpha \in \R$ be an arbitrary scalar. Then
+					\begin{enumerate}
+						\item[(i)] $\displaystyle M(\alpha \vec{V}) = \left[\begin{array}{cc}									a & b\\
+					c & d
+					\end{array}\right]
+					\mat{\alpha v_1 \\ \alpha v_2} = \mat{a\alpha v_1 + b\alpha v_2 \\ c\alpha v_1 + d\alpha v_2} = \alpha\mat{a v_1 + bv_2 \\ cv_1 + dv_2} = \alpha\left[\begin{array}{cc}												a & b\\
+					c & d
+					\end{array}\right]
+					\mat{v_1 \\v_2} = \alpha M\vec{v}$. 
+						\item[(ii)] $\displaystyle M(\vec{v} + \vec{w}) = \left[\begin{array}{cc}									a & b\\
+						c & d
+						\end{array}\right] = 
+						\mat{a(v_1 + w_1) + b(v_2 + w_2) \\ c(v_1 + w_1) + d(v_2 + w_2)} = \mat{av_1 + bv_2\\cv_1 + dv_2} + \mat{aw_1 + bw_2\\cw_1 + dw_2} = M\vec{v} + M\vec{w}$. 
+					\end{enumerate}
+					Therefore, $f_M$ is linear. 
+					\end{proof}
+				\end{answer}
+				\item Make a conjecture about functions that can be computed using matrix
+					multiplication and their linearity.
+				\begin{answer}
+					Functions from $\R^n \to \R^m$ that can be computed using matrix multiplication are linear functions. 
+				\end{answer}
+			\end{enumerate}
+	\end{enumerate}
+
+\end{document}
