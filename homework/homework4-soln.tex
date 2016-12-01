@@ -1,0 +1,317 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{changepage}
+\graphicspath{{images/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathrsfs}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+\expandafter\def\expandafter\quote\expandafter{\quote\sf\color{DarkGreen}}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[7]{
+	\lhead{{\sc #1}\\{\sc #2} %({\small \it \today})
+	}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{#7}{(#6)}%
+	}
+}
+
+%%%
+% Set up closure command
+%%%
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\Range}{\mathrm{range}}
+\newcommand{\Col}{\mathrm{col}}
+\newcommand{\Row}{\mathrm{row}}
+\newcommand{\Det}{\mathrm{det}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\Rref}{\mathrm{rref}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\RI}{\mathscr{R}}
+\newcommand{\RSI}[1]{\mathscr{R}(#1)}
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\diam}{diam}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\newenvironment{answer}{
+	\begin{adjustwidth}{8mm}{} \vspace{2mm}}{\end{adjustwidth} \vspace{2mm}
+}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{prop}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 4 Solutions}{Due: Thursday, October 27}{}{}{}{}
+	\begin{enumerate}
+		
+		\item \textbf{Reading Assignment:} Read and practice the algorithm for finding the inverse of a matrix, found at the end of section 2.2 of the textbook.
+		
+		\item For each of the following transformations, find a matrix corresponding to the transformation.
+		
+		\begin{enumerate}
+			\item $\mathcal{A}$: Rotate $90^\circ$ counterclockwise around the origin (in $\R^2$).
+			\begin{answer}
+			Let $M_A$ be the corresponding matrix for $A$. Then
+			\[
+			M_A\mat{1\\0} = \mat{0\\1} \text{ and } M_A \mat{0\\1} = \mat{-1\\0} \implies M_A = \mat{0 & -1 \\ 1 & 0}.
+			\]
+			We find the rest of the matrices in this problem similarly. 
+			\end{answer}
+			\item $\mathcal{B}$: Send every vector in $\R^2$ to the zero vector.
+			\begin{answer}
+				$\displaystyle M_B = \mat{0&0\\0&0}$.
+			\end{answer}
+			\item $\mathcal{C}$: Project (in $\R^3$) onto the $yz$-plane.
+			\begin{answer}
+				$\displaystyle M_C = \mat{0&0&0\\0&1&0\\0&0&1}$.
+			\end{answer}
+			\item $\mathcal{D}$: Project (in $\R^3$) onto the $x$-axis.
+			\begin{answer}
+				$\displaystyle M_D = \mat{1&0&0\\0&0&0\\0&0&0}$.
+			\end{answer}
+			\item $\mathcal{E}$: Reflect (in $\R^3$) across the $xy$-plane.
+			\begin{answer}
+				$\displaystyle M_E = \mat{1&0&0\\0&1&0\\0&0&-1}$.
+			\end{answer}
+			\item $\mathcal{F}$: Stretch by a factor of 2 in the $y$-direction (in $\R^2$).
+			\begin{answer}
+				$\displaystyle M_F = \mat{0&0\\0&0}$.
+			\end{answer}
+			\item $\mathcal{G}$: Stretch by a factor of 2 in the $y$-direction (in $\R^3$).
+			\begin{answer}
+				$\displaystyle M_G = \mat{1&0&0\\0&2&0\\0&0&1}$.
+			\end{answer}
+			\item $\mathcal{H}$: Rotate $90^\circ$ counterclockwise (as viewed looking ``down'' from the positive $y$-axis towards the origin) around the $y$-axis (in $\R^3$).
+			\begin{answer}
+				$\displaystyle M_H = \mat{0&0&1\\0&1&0\\-1&0&0}$.
+			\end{answer}
+		\end{enumerate}
+		
+		
+		\item \begin{enumerate}
+			\item For each transformation in problem 2, explain geometrically whether or not the transformation is invertible.
+			\begin{answer}
+				\begin{itemize}
+					\item Since we can rotate $90^\circ$ clockwise to undo the effect of $\mathcal{A}$, $\mathcal{A}$ must be invertible. 
+					\item Since multiple vectors in $\R^2$ are transformed to $\vec{0}$, it is impossible to invert the transformation $\mathcal{B}$. 
+					\item Similarly, $\mathcal{C}$ and $\mathcal{D}$ are not invertible, while $\mathcal{E}, \mathcal{F}, \mathcal{G}, \mathcal{H}$ are invertible. 
+				\end{itemize}
+			\end{answer}
+			\item Which of the matrices you generated in problem 2 are invertible?  (You may wish to use the algorithm you read about.)
+			\begin{answer}
+				By using the algorithm for finding the inverse of a matrix, we see that matrices $M_A, M_E, M_F, M_G, M_H$ are invertible, while $M_B, M_C, M_D$ are not. 
+			\end{answer}
+			\item Suppose $f$ is a transformation that is represented by the matrix $M$.
+				Is it possible for $f$ to be invertible and $M$ not invertible?  Is it possible
+				for $M$ to be invertible and $f$ not be invertible? Explain your reasoning.
+			\begin{answer}
+				Assume that $f$ is a transformation on $\R^n$ represented by the matrix $M$. Hence, for any vector $\vec{v} \in \R^n$, $f(\vec{v}) = M\vec{v}$. 
+				\begin{itemize}
+					\item If $M$ is invertible, then there must exist some matrix $M^{-1}$ so that $MM^{-1} = M^{-1}M = I$. Let $g$ be a transformation represented by the matrix $M^{-1}$. Then, for all $\vec{v} \in \R^n$, we have that $g(f(\vec{v})) = M^{-1} M \vec{v} = I \vec{v} = \vec{v}$ and also that $f(g(\vec{v})) = MM^{-1}\vec{v} = I \vec{v} = \vec{v}$. By definition, therefore, $g$ is the inverse of $f$, so $f$ must be invertible. 
+					\item If $f$ is invertible, then the mapping $f: \R^n \to \R^n$ is one-to-one. The same is true for the mapping $M: \R^n \to \R^n$. Therefore, $\vec{x} = \vec{0}$ is the unique solution for the equation $M\vec{x} = \vec{0}$. By the Inverse Matrix Theorem, $M$ is invertible. 
+				\end{itemize}
+			\end{answer}
+		\end{enumerate}
+		
+		
+		\item Each of the following matrices gives a transformation of $\R^2$ or $\R^3$.  
+			Describe the effect of that transformation in terms of the transformations from problem 2.
+			(Hint: you may need to combine two, three, or more transformations from problem 2 for some
+			examples.)
+			\[
+				X=\mat{0 & -1 \\ 2 & 0}
+				\qquad \qquad
+				Y=\mat{0 & 0 & 0\\ 0 & 1 & 0 \\ 0 & 0 & -1}
+			\]
+			\[
+				Z=\mat{0 & 0 & 1 \\ 0 & 2 & 0 \\ -1 & 0 & 0}
+				\qquad\qquad
+				W=\mat{0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0}
+			\]
+		\begin{answer}
+			\begin{itemize}
+				\item
+				\[
+				X = \mat{0 & -1 \\ 2 & 0}
+				\]
+				Observe that
+				\[
+				\mat{0 & -1 \\ 2 & 0}\mat{x\\y} = \mat{-y\\2x}.
+				\]
+				$X$ rotates $90^\circ$ counterclockwise and then stretches by a factor of $2$ in the $y$-direction (in $\R^2$). Therefore, $X = \mathcal{F} \circ \mathcal{A}$. We check
+				\[
+				M_F M_A = \mat{1&0\\0&2}\mat{0&-1\\1&0} = \mat{0&-1\\2&0} = M_X.
+				\]
+				\item Similarly, we can deduce
+				\begin{itemize}
+					\item $Y = \mathcal{C} \circ \mathcal{E}$ since
+					\[
+					M_C M_E = \mat{0&0&0\\0&1&0\\0&0&1}\mat{1&0&0\\0&1&0\\0&0&-1} = \mat{0&0&0\\0&1&0\\0&0&-1}.
+					\]
+					\item $Z = \mathcal{G} \circ \mathcal{H}$ since
+					\[
+					M_G M_H = \mat{1&0&0\\0&2&0\\0&0&1}\mat{0&0&1\\0&1&0\\-1&0&0} = \mat{0&0&1\\0&2&0\\-1&0&0} = M_Z.
+					\]
+					\item $W = \mathcal{D} \circ \mathcal{H}$ since
+					\[
+					M_D M_H = \mat{1&0&0\\0&0&0\\0&0&0}\mat{0&0&1\\0&1&0\\-1&0&0} = \mat{0&0&1\\0&0&0\\0&0&0} = M_W.
+					\]
+				\end{itemize}
+			\end{itemize}
+		\end{answer}
+		\item Use the definition of a linear transformation
+			to show that if $T$ is a linear transformation, then $T(\vec{0}) = \vec{0}$.  
+			Do not appeal to the matrix representation of $T$.
+		\begin{answer}
+			\begin{proof}
+			Assume that $T$ is a linear transformation. Then by definition, $T(\vec{0} + \vec{0}) = T(\vec{0}) + T(\vec{0})$. However, $\vec{0} + \vec{0} = \vec{0}$. Therefore, $T(\vec{0} + \vec{0}) = T(\vec{0})$. Thus, we have that $T(\vec{0}) = T(\vec{0}) + T(\vec{0})$. Therefore, $T(\vec{0}) = \vec{0}$. 
+			\end{proof}
+		\end{answer}
+		\item Consider the matrices $A = \mat{1 & 0 \\ k & 1}$, and $B = \mat{2 & 0 \\ 0 & 1}$.
+		
+		\begin{enumerate}
+			\item Describe the geometric effect of $A$.  Feel free to use the language of the in-class worksheets.
+			\begin{answer}
+				Let
+				\[
+				\mat{x\\y} \in \R^2.
+				\]
+				Then, 
+				\[
+				A\mat{x\\y} = \mat{1&0\\k&1}\mat{x\\y} = \mat{x\\kx+y}.
+				\]
+				By looking at the action of $A$ on the vector $[x,y]$, we see $A$ is a "sheer transformation", which keeps the first component of the vector the same and adds a $k$-multiple of the first component to the second component. 
+			\end{answer}
+			\item Compute the product $BA$.
+			\begin{answer}
+				\[
+				BA = \mat{2&0\\0&1}\mat{1&0\\k&1} = \mat{2&0\\k&1}.
+				\]
+			\end{answer}
+			\item Find a matrix $C$ such that $AC = BA$.
+			\begin{answer}
+				Let $C$ be the matrix
+				\[
+				\mat{a & b \\ c & d}
+				\]
+				with $a,b,c,d \in \R$. Then, we want
+				\[
+				\mat{1&0\\k&1}\mat{a&b\\c&d} = \mat{2 & 0 \\ k&1}.
+				\]
+				This gives a system of equations. 
+				\[
+				\begin{cases}
+					a &= 2 \\
+					b &= 0 \\
+					ka + c &= k \\
+					kb + d &= 1
+				\end{cases} \iff
+				\begin{cases}
+					a &= 2 \\
+					b &= 0 \\
+					c &= -k \\
+					d &= 1
+				\end{cases} \implies C = \mat{2 & 0 \\ -k & 1}.
+				\]
+			\end{answer}
+			\item Describe geometrically why $C \neq B$.
+			\begin{answer}
+				Let $[x,y] \in \R^2$. Then,
+				\[
+				C\mat{x\\y} = \mat{2 & 0 \\ -k & 1}\mat{x\\y} = \mat{2x\\-kx + y},
+				\]
+				but
+				\[
+				B\mat{x\\y} = \mat{2&0\\0&1}\mat{x\\y} = \mat{2x\\y}.
+				\]
+				Both transformations $B$ and $C$ double the first component of the vector $\vec{x} = [x,y]$, but while $B$ doesn't change the second component, $C$ subtracts $k$ multiples of the first component from the second component. Hence, unless $k = 0$, $B$ and $C$ must be different. 
+			\end{answer}
+		\end{enumerate}
+		
+		\item Suppose $A$ is an unknown matrix, but $A^{-1} = \mat{3 & 2 & -1 \\ -2 & 0 & 1 \\ 2 & 1 & 1}$
+		
+		\begin{enumerate}
+			\item Find a solution to the matrix equation $A \vec{x} = \mat{2 \\ 1 \\ 6}$.
+			\begin{answer}
+			\[
+			A\vec{x} = \mat{2\\1\\6} \iff A^{-1} A \vec{x} = A^{-1} \mat{2\\1\\6} \iff I\vec{x} = A^{-1}\mat{2\\1\\6}. 
+			\]
+			Thus,
+			\[
+			\vec{x} = \mat{3 & 2 & -1 \\ -2 & 0 & 1 \\ 2 & 1 & 1}\mat{2\\1\\6} = \mat{2\\2\\11} \implies \vec{x} = \mat{2\\2\\11}.
+			\]
+			\end{answer}
+			\item Are there other solutions besides the one you found in (a)?  Explain how you know.
+			\begin{answer}
+				There are no other solutions. The matrix $A$ has an inverse, and is thus invertible. Therefore, by the Invertible Matrix Theorem, the equation
+				\[
+				A\vec{x} = \mat{2\\1\\6}
+				\]
+				has a unique solution. 
+			\end{answer}
+		\end{enumerate}
+		
+		
+		
+		
+	\end{enumerate}
+
+\end{document}

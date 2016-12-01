@@ -1,0 +1,340 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{changepage}
+\graphicspath{{images/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathrsfs}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+\expandafter\def\expandafter\quote\expandafter{\quote\sf\color{DarkGreen}}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[7]{
+	\lhead{{\sc #1}\\{\sc #2} %({\small \it \today})
+	}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{#7}{(#6)}%
+	}
+}
+
+%%%
+% Set up closure command
+%%%
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\Range}{\mathrm{range}}
+\newcommand{\Col}{\mathrm{col}}
+\newcommand{\Row}{\mathrm{row}}
+\newcommand{\Dim}{\mathrm{dim}}
+\newcommand{\Det}{\mathrm{det}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\Rref}{\mathrm{rref}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\RI}{\mathscr{R}}
+\newcommand{\RSI}[1]{\mathscr{R}(#1)}
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\diam}{diam}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\newenvironment{answer}{
+	\begin{adjustwidth}{8mm}{} \vspace{2mm}}{\end{adjustwidth} \vspace{2mm}
+}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{prop}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 5 Solutions}{Due: Thursday, November 3}{}{}{}{}
+	\emph{We are nearly experts at typing by now.  Though you are not required
+	to type your homework, it's strongly encouraged.  You can even download
+	the \texttt{tex} file for this homework and type your answers below
+	each problem.  Using the} \verb!\begin{quote}! \emph{and} \verb!\end{quote}! \emph{environment
+		will indent anything you type inbetween.  Perfect for typing answers!}
+	\begin{enumerate}
+		\item Let $A$ and $B$ be $n\times n$ invertible matrices and let $X=AB$.  Does
+			$X^{-1}=A^{-1}B^{-1}$ or does $X^{-1}=B^{-1}A^{-1}$ or neither? Explain.
+		\begin{answer}
+			Observe that $B^{-1}A^{-1}AB = B^{-1}IB = B^{-1}B = I$. Further observe that $ABB^{-1}A^{-1} = AIA^{-1} = AA^{-1} = I$. By definition, $B^{-1}A^{-1}$ must be the inverse of $AB$. Therefore, $X^{-1} = B^{-1}A^{-1}$. 
+		\end{answer}
+		\item For each of the following sets, determine whether or
+			not it is a subspace.  Explain your answer.
+			
+		\begin{enumerate}
+			\item ${A}=\left\{\vec x:\vec x\cdot \mat{2\\3}=0\right\}\subseteq \R^2$ 
+			\begin{answer}
+			Let $\vec{u}, \vec{v} \in \R^2$ and let $\alpha \in \R$ be arbitrary. Then,
+				\begin{itemize}
+					\item If $\vec{u} \in A$, then
+					\[
+					\vec{u} \cdot \mat{2\\3} = 0 \implies (\alpha \vec{u})\cdot \mat{2\\3} = \alpha\left(\vec{u}\cdot\mat{2\\3}\right) = \alpha\cdot 0 = 0 \implies \alpha \vec{u} \in A.
+					\]
+					\item If $\vec{u},\vec{v} \in A$, then
+					\[
+					\vec{u} \cdot \mat{2\\3} = \vec{v} \cdot \mat{2\\3} = 0.
+					\]
+					Hence
+					\[
+					(\vec{u} + \vec{v}) \cdot \mat{2\\3} = \vec{u}\cdot \mat{2\\3} + \vec{v} \cdot \mat{2\\3} = 0+0 = 0 \implies \vec{u} + \vec{v} \in A. 
+					\]
+				\end{itemize}
+				By definition, $A$ is a subspace of $\R^2$. 
+			\end{answer}
+			\item ${B}\subseteq \R^3$ is the $x$-axis.
+			\begin{answer}
+				By similar arguments to part (a), we have that $B$ is a subspace of $\R^3$. 
+			\end{answer}
+			\item ${C}\subseteq \R^3$ is the plane given in vector form as $\vec x=t\mat{1\\1\\1}+s\mat{-2\\3\\-1}+\mat{0\\1\\5}$.
+			\begin{answer}
+				We begin with row reduction
+				\[
+				\mat{1&2&0\\1&3&1\\1&-1&5} \sim \mat{1&-2&0\\0&5&1\\0&1&5} \sim \mat{1&-2&0\\0&1&5\\0&0&-24}.
+				\]
+				The above matrix has $3$ pivot columns, hence its columns are linearly independent. Therefore,
+				\[
+				\mat{0\\1\\5} \notin \Span\left\{\mat{1\\1\\1}, \mat{-2\\3\\-1}\right\}.
+				\]
+				Thus the equation
+				\[
+				t\mat{1\\1\\1} + s\mat{-2\\3\\1} + \mat{0\\1\\5} = \mat{0\\0\\0}
+				\]
+				has no solution. Then $\vec{0} \notin C$ so $C$ is not a subspace of $\R^3$. 
+			\end{answer}
+			\item ${D}\subseteq \R^3$ is the plane with normal vector $\vec n=\mat{1\\1\\-1}$ passing through
+				the point $\mat{2\\2\\4}$.
+			\begin{answer}
+				$D$ is a plane with the equation $(x-2) + (y-2) - (z-4) = 0$, so $D$ is equivalently represented by a plane with the equation $x + y - z = 0$. Therefore, $D$ is a plane passing through the origin, and is thus a subspace of $\R^3$. 
+			\end{answer}
+			\item ${E}=\{(x,y):y=3x+4\}\subseteq \R^2$.
+			\begin{answer}
+				$E$ is not a subspace of $\R^2$ because $\vec{0} \notin E$. 
+			\end{answer}
+			\item ${F}=\Span\{\vec u_1, \vec u_2\}\subseteq \R^2$ where $\vec u_1=\mat{1\\0}$ and $\vec u_2=\mat{2\\0}$.
+			\begin{answer}
+				A span of any collection of vectors in $\R^2$ is always a subspace of $\R^2$. Hence $F$ is a subspace of $\R^2$. 
+			\end{answer}
+			\item ${G}\subseteq \R^4$ is the set of all solutions to the matrix equation $\mat{1&1&0&-2\\0&3&0&0\\0&1&0&0}\vec x=\mat{0\\0\\0}$.
+			\begin{answer}
+				$G$ is the null space of the matrix
+				\[
+				\mat{1&1&0&-2\\0&3&0&0\\0&1&0&0}.
+				\]
+				All null spaces are subspaces, and therefore $G$ is a subspace of $\R^4$. 
+			\end{answer}
+			\item ${H}=\{(x,y): xy=0\}\subseteq \R^2$.
+			\begin{answer}
+				Observe that
+				\[
+				\mat{1\\0}, \mat{0\\1} \in H \text{ but } \mat{1\\0} + \mat{0\\1} = \mat{1\\1} \notin H.
+				\]
+				Thus, $H$ is not a subspace of $R^2$.
+			\end{answer}
+		\end{enumerate}
+
+		\item For every set in problem 2 that is a vector space, find a basis.
+		\begin{answer}
+			\begin{enumerate}
+				\item[(a)] Let $[x,y] \in A$. Then
+				\[
+				\mat{x\\y} \cdot \mat{2\\3} = 0 \iff 2x + 3y = 0 \iff y = -\frac{2}{3}x.
+				\]
+				Therefore,
+				\[
+				\mat{x\\y} = \mat{x\\-2/3 x} = x\mat{1\\-2/3} \implies 
+				A = \Span\left\{\mat{1\\-2/3}\right\} \implies
+				\left\{\mat{1\\-2/3}\right\}
+				\]
+				is a basis for $A$. 
+				\item[(b)] Observe that
+				\[
+				B = \Span\left\{\mat{1\\0\\0}\right\} \implies \left\{\mat{1\\0\\0}\right\}
+				\]
+				is a basis for $B$. 
+				\item[(d)] $D$ is described by the plane with equation $x+y-z = 0$. Therefore, $\Dim(D) = 2$, so we need to find two linearly independent vectors on $D$ to form a basis for $D$. Pick
+				\[
+				\left\{\mat{1\\1\\2}, \mat{1\\2\\3}\right\}
+				\]
+				as a basis for $D$. 
+				\item[(f)] Observe that
+				\[
+				F = \Span\left\{\mat{1\\0}, \mat{2\\0}\right\} = \Span\left\{\mat{1\\0}\right\} \implies \left\{\mat{1\\0}\right\}
+				\]
+				is a basis for $F$. 
+				\item[(g)] We begin by row reduction on an augmented matrix. 
+				\[
+				\left[\begin{array}{cccc|c}
+					1&1&0&-2&0 \\
+					0&3&0&0&0 \\
+					0&1&0&0&0
+				\end{array}\right] \sim
+				\left[\begin{array}{cccc|c}
+					1&0&0&-2&0 \\
+					0&1&0&0&0 \\
+					0&0&0&0&0
+				\end{array}\right].
+				\]
+				Thus, we have a system of equations
+				\[
+				\begin{cases}
+					x_1 - 2x_4 &= 0 \\
+					x_2 = 0
+				\end{cases} \iff
+				\begin{cases}
+					x_1 &= 2x_4 \\
+					x_2 &= 0
+				\end{cases}.
+				\]
+				Thus, the we have that $G$ is represented in vector form as
+				\[
+				\mat{x_1\\x_2\\x_3\\x_4} = x_3\mat{0\\0\\1\\0} + x_4 \mat{2\\0\\0\\1}
+				\]
+				with $x_3, x_4 \in \R$. Therefore, a basis for $G$ is the set
+				\[
+				\left\{\mat{0\\0\\1\\0}, \mat{2\\0\\0\\1}\right\}.
+				\]
+			\end{enumerate}
+		\end{answer}
+		\item For every set in problem 2 that is a vector space, find its dimension.
+		\begin{answer}
+			We have that
+			\begin{align*}
+				\Dim A &= 1 \\
+				\Dim A &= 1 \\
+				\Dim D &= 2 \\
+				\Dim F &= 1 \\
+				\Dim G &= 2
+			\end{align*}
+		\end{answer}
+		\item Let $\mathcal P$ be the plane in $\R^3$ given in vector form by
+			$\vec x=t\vec d_1+s\vec d_2+\vec p$ for unknown vectors $\vec d_1,\vec d_2,\vec p$.
+			\begin{enumerate}
+				\item Show that if $\vec p=\vec 0$, then $\mathcal P$ is a subspace.
+				\begin{answer}
+					If $\vec{p} = \vec{0}$, then $\mathcal{P} = \{\vec{x} = t\vec{d}_1 + s\vec{d}_2 | t,s \in \R\} = \Span\{\vec{d}_1, \vec{d}_2\}$. As we know the span of any collection of vectors in $\R^3$ is a subspace, $\mathcal{P}$ is a subspace of $\R^3$. 
+				\end{answer}
+				\item What if $\vec p\neq \vec 0$?  Could $\vec p$ still be a subspace?  Give
+					conditions on $\vec p$ that determine whether or not $\mathcal P$
+					is a subspace.  That is, give a condition so that if it is true, $\mathcal P$
+					is a subspace and if it is false, $\mathcal P$ is not a subspace.
+				\begin{answer}
+					\begin{itemize}
+						\item If $\mathcal{P}$ is a subspace of $R^3$, then $\vec{0} \in \mathcal{P}$. Therefore, there exist some $t, s \in \R$ so that $t\vec{d}_1 + s\vec{d}_2 + \vec{p} = \vec{0}$. Thus, $\vec{p} = -t\vec{d}_1 - s\vec{d}_2$, so $\vec{p} \in \Span\{\vec{d}_1, \vec{d}_2\}$. 
+						\item On the other hand, if $p \in \Span\{\vec{d}_1, \vec{d}_2\}$, then there exists some $t_0, s_0 \in \R$ so that $\vec{p} = t_0\vec{d}_1 + s_0 \vec{d}_2$. Therefore, $\vec{x} = t\vec{d}_1 + s\vec{d}_2 + \vec{p} = (t+t_0) \vec{d}_1 + (s+s_0) \vec{d}_2$. Therefore, $\mathcal{P} = \{\vec{x} = (t+t_0) \vec{d}_1 + (s+s_0) \vec{d}_2 | t,s \in \R\} = \Span\{\vec{d}_1, \vec{d}_2\}$. Therefore, $\mathcal{P}$ is a subspace of $\R^3$. 
+					\end{itemize}
+					In conclusion, $\mathcal{P}$ is a subspace of $\R^3$ if and only if $\vec{p} \in \Span\{\vec{d}_1, \vec{d}_2\}$. 
+				\end{answer}
+			\end{enumerate}
+		\item Let $\mathcal V$ be the subspace spanned by $\vec v_1=\mat{1\\2\\1},\vec v_2=\mat{1\\1\\0},\vec v_3=\mat{4\\0\\-4},
+			\vec v_4=\mat{2\\3\\1},\vec v_5=\mat{-5\\4\\9}$.
+			\begin{enumerate}
+				\item Find a basis for $\mathcal V$ and call your basis vectors $\vec b_1$, $\vec b_2$, etc.
+				\begin{answer}
+					Let $V = \mat{\vec{v}_1 & \vec{v}_2 & \vec{v}_3 & \vec{v}_4 & \vec{v}_5}$. We row reduce $V$. 
+					\[
+					\mat{1&1&4&2&-5\\2&1&0&3&4\\1&0&-4&1&9} \sim
+					\mat{1&1&4&2&-5\\0&-1&-8&-1&14\\0&-1&-8&-1&14}.
+					\]
+					Continuing gives
+					\[
+					\sim \mat{1&1&4&2&-5\\0&1&8&1&-14\\0&0&0&0&0} \sim 
+					\mat{1&0&-4&1&9\\0&1&8&1&-14\\0&0&0&0&0}.
+					\]
+					$V$ only has two pivot columns, columns $1$ and $2$. Therefore, a basis for $\mathcal{V}$ is a basis for $\Col(V)$. Thus, a basis is
+					\[
+					\left\{\mat{1\\2\\1}, \mat{1\\1\\0}\right\}.
+					\]
+				\end{answer}
+				\item Describe $\mathcal V$ geometrically.
+				\begin{answer}
+					$\mathcal{V}$ is spanned by two vectors in $\R^3$. Hence $\mathcal{V}$ is a plane going through the origin. 
+				\end{answer}
+				\item Let $V=[\vec v_1|\vec v_2|\vec v_3|\vec v_4|\vec v_5]$ be the matrix whose columns are the vectors
+					$\vec v_1,\vec v_2,\vec v_3,\vec v_4,\vec v_5$, let $B=[\vec b_1|\vec b_2|\cdots]$ be the matrix
+					whose columns are your basis vectors from part (a), and let $\vec v\in \mathcal V$.
+
+					Without computing, how many solutions does the equation $V\vec x=\vec v$ have?  How
+					about $B\vec x=\vec v$?
+				\begin{answer}
+					Assume that
+					\[
+					\vec{x} = \mat{x_1\\x_2\\x_3\\x_4\\x_5}.
+					\]
+					\begin{itemize}
+						\item Then 
+						\[
+						V\vec{x} = \vec{v} \iff \mat{v_1 & v_2 & v_3 & v_4 & v_5}\mat{x_1\\x_2\\x_3\\x_4\\x_5} = \vec{v}.
+						\]
+						Therefore, $x_1\vec{v}_1 + x_2\vec{v}_2 + x_3\vec{v}_3 + x_4\vec{v}_4 + x_5\vec{v}_5 = \vec{v}$. Because $\vec{v} \in \mathcal{V} = \Col(V)$, $\vec{v}$ can be written as a linear combination of $\vec{v}_1,\cdots,\vec{v}_5$. Hence, the equation $V\vec{x} = \vec{v}$ has a solution. 
+						
+						Since $V$ has $5$ columns and only $3$ rows, there must be free variables in the equation $V\vec{x} = \vec{v}$. This implies that $V\vec{x} = \vec{v}$ has infinitely many solutions. 
+						\item Note that $\Col(B) = \Col(V)$, so $\vec{v} \in \Col(B)$. By the same argument as above, the equation $B\vec{x} = \vec{v}$ has infinitely many solutions. 
+					\end{itemize}
+				\end{answer}
+			\end{enumerate}
+		\item Suppose $A$ is an invertible matrix and $\vec c_1,\vec c_2,\ldots,\vec c_n$ are its columns.  Is
+			$\{\vec c_1,\vec c_2,\ldots, \vec c_n\}$ a basis?  Describe $\Span\{\vec c_1,\vec c_2,\ldots, \vec c_n\}$.  Explain
+			your reasoning.
+			\begin{answer}
+				By the Invertible Matrix Theorem, since $A$ is invertible, its columns $\vec{c}_1, \cdots, \vec{c}_n$ are linearly independent. Hence $\{\vec{c}_1, \cdots, \vec{c}_n\}$ is a basis. 
+				
+				Further, because $A$ is an invertible matrix, it is a square matrix. So, it must have $n$ columns and $n$ rows, so $\vec{c}_1, \cdots, \vec{c}_n \in \R^n$. Because $\{\vec{c}_1, \cdots, \vec{c}_n\}$ is a set of linearly independent vectors, $\Span \{\vec{c}_1, \cdots, \vec{c}_n\} = \R^n$. 
+			\end{answer}
+
+	\end{enumerate}
+
+\end{document}

@@ -1,0 +1,361 @@
+\documentclass[letter]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{ifthen}
+\usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{changepage}
+\graphicspath{{images/}}
+\usepackage[hidelinks]{hyperref}
+\usepackage{mathrsfs}
+
+%%%
+% Set up the margins to use a fairly large area of the page
+%%%
+\oddsidemargin=.2in
+\evensidemargin=.2in
+\textwidth=6in
+\topmargin=0in
+\parskip=.07in
+\parindent=0in
+\pagestyle{fancy}
+
+\expandafter\def\expandafter\quote\expandafter{\quote\sf\color{DarkGreen}}
+
+%%%
+% Set up the header
+%%%
+\newcommand{\setheader}[7]{
+	\lhead{{\sc #1}\\{\sc #2} %({\small \it \today})
+	}
+	\rhead{
+		{\bf #3} 
+		\ifthenelse{\equal{#4}{}}{}{(#4)}\\
+		{\bf #5} 
+		\ifthenelse{\equal{#6}{}}{#7}{(#6)}%
+	}
+}
+
+%%%
+% Set up closure command
+%%%
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+%%%
+% Set up some shortcut commands
+%%%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Proj}{\mathrm{proj}}
+\newcommand{\Perp}{\mathrm{perp}}
+\newcommand{\Span}{\mathrm{span}}
+\newcommand{\Null}{\mathrm{null}}
+\newcommand{\Rank}{\mathrm{rank}}
+\newcommand{\Range}{\mathrm{range}}
+\newcommand{\Col}{\mathrm{col}}
+\newcommand{\Row}{\mathrm{row}}
+\newcommand{\Det}{\mathrm{det}}
+\newcommand{\mat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\Rref}{\mathrm{rref}}
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\inner}[2]{\langle #1, #2 \rangle}
+\newcommand{\RI}{\mathscr{R}}
+\newcommand{\RSI}[1]{\mathscr{R}(#1)}
+
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\diam}{diam}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+\newenvironment{answer}{
+	\begin{adjustwidth}{8mm}{} \vspace{2mm}}{\end{adjustwidth} \vspace{2mm}
+}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{prop}{Proposition}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+%%%
+% This is where the body of the document goes
+%%%
+\begin{document}
+	\setheader{Math 240}{Homework 6 Solutions}{Due: Thursday, November 17}{}{}{}{}
+	\emph{We are nearly experts at typing by now.  Though you are not required
+	to type your homework, it's strongly encouraged.  You can even download
+	the \texttt{tex} file for this homework and type your answers below
+	each problem.  Using the} \verb!\begin{quote}! \emph{and} \verb!\end{quote}! \emph{environment
+		will indent anything you type inbetween.  Perfect for typing answers!}
+	
+	\begin{enumerate}
+		
+		%\item Let $\vec{u} = \mat{1\\1\\1}$, $\vec{v} = \mat{1\\-1\\-1}$, $\vec{w} = \mat{-1\\1\\-1}$, and $\vec{x} = \mat{2\\0\\0}$.
+		%\begin{enumerate}
+		%	\item Find a linear transformation $T_1$ such that $T_1(\vec{e_1}) = \mat{1\\2\\3}$, $T_1(\vec{e_2}) = \mat{4\\5\\6}$, and $T_1(\vec{e_3}) = \mat{7\\8\\9}$.
+		%	\item Find a linear transformation $T_2$ such that $T_2(\vec{u}) = \mat{1\\2\\3}$, $T_2(\vec{v}) = \mat{4\\5\\6}$, and $T_2(\vec{w}) = \mat{7\\8\\9}$.
+		%	\item Is there a linear transformation $T_3$ such that $T_3(\vec{u}) = \mat{1\\2\\3}$, $T_3(\vec{v}) = \mat{4\\5\\6}$, and $T_3(\vec{x}) = \mat{7\\8\\9}$?  Explain why or why not.
+		%\end{enumerate}
+		%You may give your answers in the form of a matrix.
+		
+		\item Let $A = \mat{1 & 0 & 1 & 1 & 3 \\ 1 & 2 & 3 & -1 & -1 \\ 3 & 1 & 4 & 2 & 7}$.  Let $\mathcal{C}$, $\mathcal{R}$, and $\mathcal{N}$ be the column, row, and null spaces of $A$, respectively.
+		\begin{enumerate}
+			\item Find a basis for $\mathcal{C}$
+			\begin{answer}
+				We begin with row reduction. 
+				\[
+				\left[\begin{array}{ccccc}
+					1 & 0 & 1 & 1 & 3 \\
+					1 & 2 & 3 & -1 & -1 \\
+					3 & 1 & 4 & 2  & 7
+				\end{array}\right] \sim 
+				\left[\begin{array}{ccccc}
+					1 & 0 & 1 & 1 & 3 \\
+					0 & 2 & 2 & -2 & -4 \\
+					0 & 1 & 1 & -1 & -2
+				\end{array}\right] \sim 
+				\left[\begin{array}{ccccc}
+					1 & 0 & 1 & 1 & 3 \\
+					0 & 1 & 1 & -1 & -2 \\
+					0 & 0 & 0 & 0 & 0
+				\end{array}\right].
+				\]
+				Since $\Rref(A)$ has two pivot columns, columns $1$ and $2$, a basis for the column space of $A$ is
+				\[
+				\left\{\mat{1\\1\\3}, \mat{0\\2\\1}\right\}.
+				\]
+			\end{answer}
+			\item Find a basis for $\mathcal{R}$.
+			\begin{answer}
+				Since $\Rref(A)$ has two non-zero rows, rows $1$ and $2$, a basis for the row space of $A$ is either
+				\[
+				\left\{\mat{1\\0\\1\\1\\3}, \mat{0\\1\\1\\-1\\-2}\right\} \text{ or } \left\{\mat{1\\0\\1\\1\\3}, \mat{1\\2\\3\\-1\\-1}\right\}.
+				\]
+			\end{answer}
+			\item Find a basis for $\mathcal{N}$.
+			\begin{answer}
+				In order to find a basis for $\mathcal{N}$, we begin by solving the matrix equation
+				\[
+				\left[\begin{array}{ccccc}
+					1 & 0 & 1 & 1 & 3 \\
+					0 & 1 & 1 & -1 & -2 \\
+					0 & 0 & 0 & 0 & 0
+				\end{array}\right] \mat{x_1\\x_2\\x_3\\x_4\\x_5} = 
+				\mat{0\\0\\0\\0\\0}.
+				\]
+				Therefore, we have that
+				\[
+				\begin{cases}
+					x_1 + x_3 + x_4 + 3x_5 &= 0\\
+					x_2 + x_3 - x_4 - 2x_5 &= 0
+				\end{cases} \iff
+				\begin{cases}
+					x_1 &= -x_3 - x_4 - 3x_5 \\
+					x_2 &= -x_3 + x_4 + 2x_5
+				\end{cases}.
+				\]
+				Therefore, the null space given in vector form is
+				\[
+				\mat{x_1\\x_2\\x_3\\x_4\\x_5} = x_3\mat{-1\\-1\\1\\0\\0} + x_4\mat{-1\\1\\0\\1\\0} + x_5\mat{-3\\2\\0\\0\\1}.
+				\]
+				Hence, a basis for $\Null(A)$ is 
+				\[
+				\left\{\mat{-1\\-1\\1\\0\\0}, \mat{-1\\1\\0\\1\\0}, \mat{-3\\2\\0\\0\\1}\right\}.
+				\]
+			\end{answer}
+			\item Find the dot product of each of your basis vectors for $\mathcal{R}$ with each of your basis vectors for $\mathcal{N}$.
+			What can you say geometrically about $\mathcal{R}$ and $\mathcal{N}$?
+			\begin{answer}
+				Observe that $[1,0,1,1,3] \cdot [-1,-1,1,0,0] = -1 + 0 + 1+ 0 + 0 = 0$. Similarly, the dot products of each other basis vector of $\mathcal{R}$ dotted with each other basis vector for $\mathcal{N}$ are all $0$. Hence, $\mathcal{R}$ and $\mathcal{N}$ are perpendicular. 
+			\end{answer}
+		\end{enumerate}
+		
+		\item Let $L$ be the line $x=y=z$ in $\R^3$.
+		\begin{enumerate}
+			\item Find a $3\times 3$ matrix $B_1$ whose column space is the $xy$-plane and whose null space is $L$.
+			\begin{answer}
+				Let
+				\[
+				B_1 = \left[\begin{array}{ccc}
+							a & b & c \\
+							d & e & f \\
+							g & h & l
+						\end{array}\right].
+				\]
+				Since the column space is the $xy$-plane, we have that $g=h=l=0$. Next, we seek to find $\Null(B_1)$. To do so, we solve the matrix equation
+				\[
+				\left[\begin{array}{ccc}
+					a & b & c \\
+					d & e & f \\
+					0 & 0 & 0
+				\end{array}\right] \mat{x\\y\\z} = \mat{0\\0\\0} \iff
+				\begin{cases}
+					ax+by+cz &= 0 \\
+					dx+ey+fz &= 0 
+				\end{cases}. 
+				\]
+				Further note that $\Null(B_1)$ is a line, and thus has dimension $1$. Therefore, $\Row(B_1)$ must have dimension $2$, and thus is a plane. We also know that $\Row(B_1)$ and $\Null(B_1)$ are perpendicular, and that $\Row(B_1)$ is 
+				\[
+				\Span \left\{\mat{a\\b\\c}, \mat{d\\e\\f}\right\}.
+				\]
+				Thus, we need to find $2$ linearly independent vectors that are perpendicular to the direction vector of the line $x=y=z$. This direction vector is $[1,1,1]$. Thus, we pick 
+				\[
+				\mat{a\\b\\c} = \mat{1\\-1\\0} \text{ and } \mat{d\\e\\f} = \mat{1\\0\\-1} \implies B_1 = \mat{1 & -1 & 0 \\ 1 & 0 & -1 \\ 0 & 0 & 0}.
+				\]
+			\end{answer}
+			\item Find a $3\times 3$ matrix $B_2$ whose column space is the $xz$-plane and whose null space is $L$.
+			\begin{answer}
+				By a similar idea to part (a), we find that a possible $B_2$ is
+				\[
+				\mat{1 & -1 & 0 \\ 0 & 0 & 0 \\ 1 & 0 & -1}.
+				\]
+			\end{answer}
+			\item Find the row space of $B_1$ and the row space of $B_2$.  How do they compare?  Explain.
+			\begin{answer}
+				Both $\Row(B_1)$ and $\Row(B_2)$ are equal to
+				\[
+				\Span\left\{\mat{1\\-1\\0}, \mat{1\\0\\-1}\right\}.
+				\]
+				Thus, they are identical. This is further evidenced by the fact that since $\Null(B_1)$ and $\Null(B_2)$ have dimension $1$, and thus $\Row(B_1)$ and $\Row(B_2)$ both have dimension $2$. Further, both row spaces are perpendicular to the line $x=y=z$. Since the plane that goes through the origin and is perpendicular to the line $x=y=z$ is unique, we have that $\Row(B_1) = \Row(B_2)$. 
+			\end{answer}
+		\end{enumerate}
+		
+		\item A linear transformation $T$ has the following effects:
+		\begin{itemize}
+			\item Along the line $y = x$, it ``shrinks'' everything by a factor of 2---points along this line move halfway to the origin.
+			\item Along the line $y=-3x$, it reflects everything over the origin---if $\vec{v}$ is the position vector of a point on this line, then it moves to $-\vec{v}$.
+		\end{itemize}
+		\begin{enumerate}
+			\item Find a matrix $A$ such that $T(\vec{v}) = A\vec{v}$ for all $\vec{v} \in \R^2$.
+			\begin{answer}
+				First, we pick a vector on the line $y=x$. Such a vector is $[1,1]$. Therefore, we know that 
+				\[
+				A \mat{1\\1} = \mat{1/2 \\ 1/2}. 
+				\]
+				Further, we pick a vector on the line $y = -3x$. Such a vector is $[1,-3]$. Then, we know that
+				\[
+				A \mat{1\\-3} = \mat{-1\\3}.
+				\]
+				Let
+				\[
+				A = \mat{a & b \\ c & d}.
+				\]
+				We set up a system of equations using the above vectors
+				\[
+				\begin{cases}
+					a + b &= 1/2 \\
+					c + d &= 1/2 \\
+					a - 3b &= -1 \\
+					c - 3d &= 3
+				\end{cases} \iff
+				\begin{cases}
+					a &= 1/8 \\
+					b &= 3/8 \\
+					c &= 9/8 \\
+					d &= 5/8
+				\end{cases} \implies
+				A = \mat{1/8 & 3/8 \\ 9/8 & -5/8}.
+				\]
+			\end{answer}
+			\item Find $A^{-1}$.
+			\begin{answer}
+			We row reduce an augmented matrix.
+			\[
+			[A \mid I] = \left[\begin{array}{cc|cc}
+				1/8 & 3/8 & 1 & 0 \\
+				9/8 & -5/8 & 0 & 1
+			\end{array}\right] \sim
+			\left[\begin{array}{cc|cc}
+				1 & 3 & 8 & 0 \\
+				0 & -32 & -72 & 8
+			\end{array}\right] \sim 
+			\left[\begin{array}{cc|cc}
+				1 & 3 & 8 & 0 \\
+				9 & -5 & 0 & 8
+			\end{array}\right]
+			\]
+			Further reduction gives
+			\[
+			\sim \left[\begin{array}{cc|cc}
+				1 & 3 & 8 & 0 \\
+				9 & -5 & 0 & 8
+			\end{array}\right] \sim 
+			\left[\begin{array}{cc|cc}
+				1 & 0 & 5/4 & 3/4 \\
+				0 & 1 & 9/4 & -1/4
+			\end{array}\right] \implies 
+			A^{-1} = \mat{5/4 & 3/4 \\ 9/4 & -1/4}.
+			\]
+			\end{answer}
+			\item What are the ``stretch factors'' and ``stretch directions'' of the transformation given by $A^{-1}$?
+			\begin{answer}
+				If $\lambda \neq 0$ is an eigenvalue for $A$ with corresponding vector $\vec{x}$, then $A\vec{x} = \lambda \vec{x} \implies A^{-1} A \vec{x} = A^{-1} \lambda \vec{x}$. Therefore, $\vec{x} = \lambda A^{-1} \vec{x}$. Thus, 
+				\[
+				\frac{1}{\lambda} \vec{x} = A^{-1} \vec{x}.
+				\]
+				Thus, $\vec{x}$ is also an eigenvector for $A^{-1}$, with corresponding eigenvalue $1/\lambda$. In this problem $A^{-1}$ has stretch factor $1/2$ along the direction $[1,1]$ and a stretch factor of $-1$ along the direction $[1,-3]$. 
+			\end{answer}
+		\end{enumerate}
+
+		%\item Let $T:\R^n\to\R^n$. A subspace $X\subseteq \R^n$ is called \emph{invariant with respect to $T$} if $TX=X$.  That is,
+			%$\{\vec v:\vec v=T\vec x\text{ for some }\vec x\in X\}=X$.  Note, this is \emph{different} than saying $T\vec x=\vec x$ for all $\vec x\in X$.
+		%\begin{enumerate}
+			%\item Describe all invariant subspaces of the linear transformation given by the matrix $\mat{1&0\\0&2}$.
+			%\item Describe all invariant subspaces of the linear transformation given by the matrix $\mat{2&0\\0&2}$.
+			%\item Describe all invariant subspaces of the sheer given by the matrix $\mat{1&a\\0&1}$ where $a\neq 0$.
+			%\item Explain how invariant subspaces relate to eigenvectors.
+		%\end{enumerate}
+		
+		\item Recall the ``italicizing $N$'' matrix that you found in class: $A = \mat{1 & \frac{1}{3} \\ 0 & \frac{4}{3}}$.
+		Find all eigenvalues (``stretch factors'') and eigenvectors (``stretch directions'') of $A$.
+		\begin{answer}
+			Observe that $A$ is a triangular matrix, and therefore its eigenvalues are the entries on its main diagonal: $\lambda = 1$ and $\lambda = 4/3$. 
+			\begin{itemize}
+				\item $\lambda = 1$. 
+				\[
+				(A - \lambda I) \mat{x\\y} = \mat{0 & 1/3 \\ 0 & 1/3}\mat{x\\y} = \mat{0\\0} \iff \frac{1}{3}y = 0 \iff y=0.
+				\]
+				Thus, the eigenvectors are vectors of the form 
+				\[
+				\mat{x\\0} = x\mat{1\\0}
+				\]
+				with $x \neq 0$. 
+				\item $\lambda = 4/3$
+				\[
+				(A - \lambda I) \mat{x\\y} = \mat{-1/3 & 1/3 \\ 0 & 0}\mat{x\\y} = \mat{0\\0} \iff -\frac{1}{3} x + \frac{1}{3} y = 0 \iff y = x.
+				\]
+				Thus, the eigenvectors are vectors of the form
+				\[
+				\mat{x\\x} = x\mat{1\\1}
+				\]
+				with $x \neq 0$. 
+			\end{itemize}
+		\end{answer}
+		
+		%\item Give an example of a 2-by-2 matrix with fewer than two ``stretch directions''.  (That is, find a matrix with fewer than two linearly indepedent eigenvectors.)
+			
+		
+		
+			
+		
+	\end{enumerate}
+
+\end{document}
